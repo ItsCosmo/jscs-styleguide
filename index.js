@@ -7,6 +7,6 @@ module.exports = {
         
         options.title = options.title || "Style Guide";
         
-        return "JSCS:" + options.title + jscs.requireCurlyBraces;
+        return "JSCS: " + options.title + jscs.requireCurlyBraces;
     }
 };
