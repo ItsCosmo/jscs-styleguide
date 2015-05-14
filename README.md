@@ -1,2 +1,3 @@
 # jscs-styleguide
-Generate a human-readable Style Guide from a JSCS configuration
+**** UNDER DEVELOPMENT *** DO NOT USE ***
+Generate a human-readable Style Guide from a JSCS configuration.
