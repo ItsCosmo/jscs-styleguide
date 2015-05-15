@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{options.title}}</title>
+    <style>
+        body {
+            font-family: BentonSans, "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.9em;
+        }
+        h1.title {
+            width: 100%;
+            background-color: #0066aa;
+            color: white;
+            padding-left: 30px;
+            box-sizing: border-box;
+        }
+        
+        .right, .wrong {
+            background-color: white;
+            line-height: 1.5em;
+            padding: 0;
+            border-radius: 6px;
+            border: 1px solid #aaaaaa;
+            width: 75%;
+            margin-top: 10px;
+        }
+        
+        .example span {
+            padding-left: 10px; 
+            font-size: 0.7em;
+        }
+        
+        pre {
+            margin: 5px 0 5px 10px;
+        }
+        ol {
+            width: 50%;
+        }
+        ul {
+            margin-bottom: 10px;
+        }
+        ul li {
+            list-style-type: disc;
+        }
+        .example {
+            display: inline-block;
+            width: 100%;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        
+        .right .example {
+            background-color: #aaffaa;
+        }
+
+        .wrong .example {
+            background-color: #ffaaaa;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 class="title">{{options.title}}</h1>
+    <ol>
+        {{#if doc.requireCurlyBraces.jscs}}
+            {{>listStrings doc.requireCurlyBraces}}
+        {{/if}}
+        {{#if doc.requireOperatorBeforeLineBreak.jscs}}
+            {{>listStrings doc.requireOperatorBeforeLineBreak}}
+        {{/if}}
+        {{#if doc.requireCamelCaseOrUpperCaseIdentifiers.jscs}}
+            {{>listStrings doc.requireCamelCaseOrUpperCaseIdentifiers}}
+        {{/if}}
+    </ol>
+</body>
+</html>        
