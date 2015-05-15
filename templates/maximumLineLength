@@ -1,0 +1,15 @@
+<li class="styleitem">
+    Lines can have a maximum length of {{jscsval.value}} characters.
+    {{#if jscsval.tabSize}}
+        The TAB character is counted as {{jscsval.tabSize}} characters.
+    {{/if}}
+    {{#if jscsval.allowComments}}
+        Comments are allowed to break this rule.
+    {{/if}}
+    {{#if jscsval.allowUrlComments}}
+        Comments with URLs are allowed to break this rule.
+    {{/if}}
+    {{#if jscsval.allowRegex}}
+        Regular expression literals are allowed to break this rule.
+    {{/if}}
+</li>
