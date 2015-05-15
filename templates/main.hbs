@@ -15,7 +15,7 @@
             box-sizing: border-box;
         }
         
-        .right, .wrong {
+        .right, .wrong, .example {
             background-color: white;
             line-height: 1.5em;
             padding: 0;
@@ -25,9 +25,13 @@
             margin-top: 10px;
         }
         
-        .example span {
+        .heading span {
             padding-left: 10px; 
             font-size: 0.7em;
+        }
+        
+        .styleitem {
+            margin-top: 10px;
         }
         
         pre {
@@ -38,23 +42,34 @@
         }
         ul {
             margin-bottom: 10px;
+            background-color: #ffffcc;
+            border-left: 4px solid #444444;
         }
         ul li {
-            list-style-type: disc;
+            list-style-type: none;
+            display: inline-block;
+            /* background-color: #cceeff; */
+            padding: 2px;
+            margin-right: 3px;
+            border-radius: 3px;
         }
-        .example {
+        .heading {
             display: inline-block;
             width: 100%;
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
         }
         
-        .right .example {
+        .right .heading {
             background-color: #aaffaa;
         }
 
-        .wrong .example {
+        .wrong .heading {
             background-color: #ffaaaa;
+        }
+        
+        .example .heading {
+            background-color: #aaaaaa;
         }
         
     </style>
@@ -63,7 +78,15 @@
     <h1 class="title">{{options.title}}</h1>
     <ol>
         {{#each props}}
-            {{>attribute}}
+            {{#ifCond name "===" "maximumLineLength"}}
+                {{>maximumLineLength}}
+            {{/ifCond}}
+            {{#ifCond name "===" "validateQuoteMarks"}}
+                {{>validateQuoteMarks}}
+            {{/ifCond}}
+            {{#if jscs}}
+                {{>attribute}}
+            {{/if}}
         {{/each}}
     </ol>
 </body>
