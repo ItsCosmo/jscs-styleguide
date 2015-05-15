@@ -3,7 +3,7 @@ Generate a human-readable Style Guide from a JSCS configuration. As of now, this
 
 ## Installation
 
-    npm install jscs-styleguide --save
+    coming soon
 
 ## Usage
 
