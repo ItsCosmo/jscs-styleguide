@@ -1,9 +1,9 @@
 /**
- * Created by pkleim on 5/13/2015.
+ * Created by pkleim on 5/14/2015.
  */
-var chai = require("chai");
+var chai = require("chai"),
     should = chai.should(),
-    expect = chai.expect(),
+    expect = chai.expect();
     style = require("../index"),
     jscs = require("../config.jscs.json");
 
@@ -12,9 +12,9 @@ describe("jscs-styleguide", function() {
         style.should.exist;
     });
     
-    it("should work", function() {
-        var o = style.gen(jscs);
-        o.should.include("STYLE");
+    it("should load a handlebars template", function() {
+        var o = style.gen(jscs, {title: "eStatement Style Guide"});
+        o.should.include("Style");
         console.log(o);
     });
 });
