@@ -5,10 +5,41 @@ var fs = require("fs"),
     hb = require("handlebars"),
     main = require("./templates/main.hbs"),
     attribute = require("./templates/attribute.hbs"),
+    maximumLineLength = require("./templates/maximumLineLength.hbs"),
+    validateQuoteMarks = require("./templates/validateQuoteMarks.hbs"),
     props = require("./props.json");
     
-    hb.registerPartial("attribute", attribute);
+hb.registerPartial("attribute", attribute);
+hb.registerPartial("maximumLineLength", maximumLineLength);
+hb.registerPartial("validateQuoteMarks", validateQuoteMarks);
 
+hb.registerHelper("ifTypeof", function(v1, v2, options) {
+   return (typeof v1 === v2) ? options.fn(this) : options.inverse(this); 
+});
+
+hb.registerHelper("ifCond", function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case "==":
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case "===":
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case "<":
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case "<=":
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case ">":
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case ">=":
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case "&&":
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case "||":
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
+});
 
 module.exports = {
     gen: function(jscs, options) {
@@ -32,9 +63,29 @@ module.exports = {
         options.title = options.title || "Style Guide";
 
         for (var i = 0; i < props.length; i++) {
-            var p = props[i];
-            if (jscs[p.name]) {
-                p.jscs = jscs[p.name];
+            var p = props[i], val = jscs[p.name];
+            if (val) {
+                console.log("%%% PROPERTY:", p.name);
+                if ((p.name === "maximumLineLength")) {
+                    if (typeof val === "number") {
+                        p.jscsval = {value: val}
+                    } else {
+                        p.jscsval = val;
+                    }
+                } else if (p.name === "validateQuoteMarks") {
+                    if (typeof val !== "object") {
+                        p.jscsval = {mark: val};
+                    } else {
+                        p.jscsval = val;
+                    }
+                    if (p.jscsval.mark === '"') {
+                        p.jscsval.other = "'";
+                    } else if (p.jscsval.mark === "'") {
+                        p.jscsval.other = '"';
+                    }
+                } else {
+                    p.jscs = val;
+                }
             }
         }
 
