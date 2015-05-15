@@ -1,0 +1,37 @@
+<li class="styleitem">
+    {{#ifCond jscsval.mark "===" "\""}}
+        Strings must be quoted with double-quotes.
+    {{/ifCond}}
+    {{#ifCond jscsval.mark "===" "'"}}
+        String must be quoted with single-quote (apostrophe).
+    {{/ifCond}}
+    {{#ifCond jscsval.mark "===" true}}
+        Strings must be quoted with the quote first encountered in the source code.
+    {{/ifCond}}
+    {{#if jscsval.escape}}
+        The "other" quote mark may be used only in cases where it is necessary in order to avoid having to escape.
+    {{/if}}
+    {{#ifCond jscsval.mark "===" true}}
+        <div class="example">
+            <span class="heading"><span>EXAMPLE</span></span>
+            <pre><code class="lang-js">var s = "First quote mark is double";</code></pre>
+        </div>
+        <div  class="right">
+            <span class="heading"><span>VALID</span></span>
+            <pre><code class="lang-js">var s = "A String Value";<br />var s = 'A String containing "quote mark"';</code></pre>
+        </div>
+        <div class="wrong">
+            <span class="heading"><span>INVALID</span></span>
+            <pre><code>var s = 'A String Value';</code></pre>
+        </div>
+    {{else}}
+        <div  class="right">
+            <span class="heading"><span>VALID</span></span>
+            <pre><code class="lang-js">var s = {{jscsval.mark}}A String Value{{jscsval.mark}};<br />var s = {{jscsval.other}}A String containing {{jscsval.mark}}quote mark{{jscsval.mark}}{{jscsval.other}};</code></pre>
+        </div>
+        <div class="wrong">
+            <span class="heading"><span>INVALID</span></span>
+            <pre><code>var s = {{jscsval.other}}A String Value{{jscsval.other}};</code></pre>
+        </div>
+    {{/ifCond}}
+</li>
