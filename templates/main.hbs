@@ -62,15 +62,9 @@
 <body>
     <h1 class="title">{{options.title}}</h1>
     <ol>
-        {{#if doc.requireCurlyBraces.jscs}}
-            {{>listStrings doc.requireCurlyBraces}}
-        {{/if}}
-        {{#if doc.requireOperatorBeforeLineBreak.jscs}}
-            {{>listStrings doc.requireOperatorBeforeLineBreak}}
-        {{/if}}
-        {{#if doc.requireCamelCaseOrUpperCaseIdentifiers.jscs}}
-            {{>listStrings doc.requireCamelCaseOrUpperCaseIdentifiers}}
-        {{/if}}
+        {{#each props}}
+            {{>attribute}}
+        {{/each}}
     </ol>
 </body>
 </html>        
