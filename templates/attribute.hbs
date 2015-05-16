@@ -2,16 +2,16 @@
     <p>{{message}}</p>
     <ul class="jscslist">
         {{#each jscs}}
-            <li>{{ this }}</li>
+            <li>"{{ this }}"</li>
         {{/each}}
     </ul>
     
     <div class="right">
-        <span class="example"><span>VALID</span></span>
+        <span class="heading"><span>VALID</span></span>
         <pre><code class="lang-js">{{right}}</code></pre>
     </div>
     <div class="wrong">
-        <span class="example"><span>INVALID</span></span>
+        <span class="heading"><span>INVALID</span></span>
         <pre><code>{{wrong}}</code></pre>
     </div>
 </li>
