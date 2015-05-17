@@ -1,10 +1,20 @@
 <li class="styleitem">
-    <p>{{message}}</p>
+    <p>{{{message}}}</p>
+    {{#ifTypeof jscs "[object Array]"}}
     <ul class="jscslist">
         {{#each jscs}}
             <li>"{{ this }}"</li>
         {{/each}}
     </ul>
+    {{/ifTypeof}}
+    {{#if jscs.allExcept}}
+        <p>An exception is made for the following:</p>
+        <ul>
+            {{#each jscs.allExcept}}
+                <li>"{{ this }}"</li>
+            {{/each}}
+        </ul>
+    {{/if}}
     
     <div class="right">
         <span class="heading"><span>VALID</span></span>

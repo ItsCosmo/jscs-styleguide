@@ -2,7 +2,7 @@
  * Created by pkleim on 5/13/2015.
  */
 var fs = require("fs"),
-    hb = require("handlebars"),
+    hb = require("handlebars")
     main = require("./templates/main.hbs"),
     attribute = require("./templates/attribute.hbs"),
     maximumLineLength = require("./templates/maximumLineLength.hbs"),
@@ -14,7 +14,7 @@ hb.registerPartial("maximumLineLength", maximumLineLength);
 hb.registerPartial("validateQuoteMarks", validateQuoteMarks);
 
 hb.registerHelper("ifTypeof", function(v1, v2, options) {
-   return (typeof v1 === v2) ? options.fn(this) : options.inverse(this); 
+   return (Object.prototype.toString.call(v1) === v2) ? options.fn(this) : options.inverse(this);
 });
 
 hb.registerHelper("ifCond", function (v1, operator, v2, options) {
