@@ -58,6 +58,23 @@
         ]
     },
     {
+        "name": "requireMultipleVarDecl",
+        "alt": [
+            {
+                "test": "jscs === true",
+                "message": "Multiple consecutive <code>var</code> declarations must be declared as a comma-separated list with a single <code>var</code>. ",
+                "right": "var x = 1, y = 2;\rsomeOtherCode();\rvar a = 3,\r    b = 4;",
+                "wrong": "var x = 1;\rvar y = 2;\rsomeOtherCode();"
+            },
+            {
+                "test": "jscs === \"onevar\"",
+                "message": "Only one <code>var</code> statement is allowed per function scope. ",
+                "right": "var x = 1, y = 2,\r    a,\r    b;\rsomeOtherCode();\ra = 3;\rb = 4;",
+                "wrong": "var x = 1, y = 2;\rsomeOtherCode();\rvar a = 3,\r    b = 4;"
+            }
+        ]
+    },
+    {
         "name": "requireOperatorBeforeLineBreak",
         "message": "When expressions involving binary operators are split between lines, the operator must appear before the line break.",
         "right": "var x = y ?\r        1 : 2;",
@@ -68,6 +85,21 @@
         "message": "Do not allow 'sticky' binary operators. The following operators must be preceeded by a space:",
         "right": "x != y;",
         "wrong": "x!= y;"
+    },
+    {
+        "name": "validateIndentation",
+        "alt": [
+            {
+                "test": "jscs === \"\t\"",
+                "message": "Switch and block statements must be indented with a TAB (\\t) character. ",
+                "right": "if(a) {\r    b = c; \\\\ line is indented with \\t\r}",
+                "wrong": "if(a) {\r    b = c; \\\\ line is indented with spaces\r}"
+            },
+            {
+                "test": "jscs.includeEmptyLines",
+                "message1": "Empty lines must also be indented in the same manner. "
+            }
+        ]
     },
     {
         "name": "validateQuoteMarks",

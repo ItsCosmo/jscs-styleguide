@@ -20,7 +20,10 @@
         "allowComments": true,
         "allowRegex": true
     },
-    "validateIndentation": 4,
+    "validateIndentation": {
+        "value": 4,
+        "includeEmptyLines": true
+    },
     "validateQuoteMarks": {
         "mark": "\"",
         "escape": true

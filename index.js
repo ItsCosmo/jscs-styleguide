@@ -40,9 +40,11 @@
     
     function evaluate(str) {
         var jscs = this.config;
-        var result = eval(str);
-        console.log("EVAL:",str,result);
-        return result;
+        return eval(str);
+    }
+
+    function spaces(n) {
+        return Array(n + 1).join(" ");
     }
     
     module.exports = {
@@ -72,6 +74,16 @@
                     if (p.name === "maximumLineLength") {
                         p.message = "Lines can have a maximum of " + ((typeof val === "number") ? val : val.value) + " characters. ";
                         p.message += "Tabs count as " + ((val.tabSize !== undefined) ? val.tabSize : 1) + " characters. ";
+                    } else if (p.name === "validateIndentation") {
+                        if (typeof val === "number") {
+                            p.message = "Block statements must be indented with " + val + " space characters. ";
+                            p.right = "if(a) {\r" + spaces(val) + "b = c; \\\\ line is indented with " + val + " spaces\r}";
+                            p.wrong = "if(a) {\r" + spaces(val+2) + "b = c; \\\\ line is indented with " + (val+2) + " spaces\r}";
+                        } else if (val.value) {
+                            p.message = "Block statements must be indented with " + val.value + " space characters. ";
+                            p.right = "if(a) {\r" + spaces(val.value) + "b = c; \\\\ line is indented with " + val.value + " spaces\r}";
+                            p.wrong = "if(a) {\r" + spaces(val.value+2) + "b = c; \\\\ line is indented with " + (val.value+2) + " spaces\r}";
+                        }
                     }
                     if (p.alt) {
                         for (var a = 0; a < p.alt.length; a++) {
