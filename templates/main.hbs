@@ -78,15 +78,12 @@
     <h1 class="title">{{options.title}}</h1>
     <ol>
         {{#each props}}
-            {{#ifCond name "===" "maximumLineLength"}}
+            {{#ifCond template "===" "maximumLineLength"}}
                 {{>maximumLineLength}}
             {{/ifCond}}
-            {{#ifCond name "===" "validateQuoteMarks"}}
-                {{>validateQuoteMarks}}
-            {{/ifCond}}
-            {{#if jscs}}
+            {{#ifCond template "===" "attribute"}}
                 {{>attribute}}
-            {{/if}}
+            {{/ifCond}}
         {{/each}}
     </ol>
 </body>
