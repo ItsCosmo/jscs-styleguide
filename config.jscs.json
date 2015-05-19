@@ -16,7 +16,8 @@
     "requireMultipleVarDecl": true,
     "maximumLineLength": {
         "value": 100,
-        "tabSize": 0,
+        "tabSize": 4,
+        "allowComments": true,
         "allowRegex": true
     },
     "validateIndentation": 4,

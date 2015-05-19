@@ -42,7 +42,9 @@
     
     function evaluate(str) {
         var jscs = this.config;
-        return eval(str);
+        var result = eval(str);
+        console.log("EVAL:",str,result);
+        return result;
     }
     
     module.exports = {
@@ -70,31 +72,29 @@
                 var p = props[i], val = jscs[p.name];
                 if (val) {
                     if (p.name === "maximumLineLength") {
-                        if (typeof val === "number") {
-                            p.jscs = {value: val}
-                        } else {
-                            p.jscs = val;
-                        }
-                    } else {
-                        if (p.alt) {
-                            for (var a = 0; a < p.alt.length; a++) {
-                                var alt = p.alt[a];
-                                if (evaluate.call({config: val}, alt.test)) {
-                                    alt.message && (p.message = alt.message);
-                                    alt.right &&(p.right = alt.right);
-                                    alt.wrong && (p.wrong = alt.wrong);
-                                    alt.example && (p.example = alt.example);
-                                    alt.message1 && (p.message1 = alt.message1);
-                                    alt.message2 && (p.message2 = alt.message2);
-                                    alt.message3 && (p.message3 = alt.message3);
-                                }
+                        p.message = "Lines can have a maximum of " + ((typeof val === "number") ? val : val.value) + " characters. ";
+                        p.message += "Tabs count as " + ((val.tabSize !== undefined) ? val.tabSize : 1) + " characters. ";
+                    }
+                    if (p.alt) {
+                        for (var a = 0; a < p.alt.length; a++) {
+                            var alt = p.alt[a];
+                            if (evaluate.call({config: val}, alt.test)) {
+                                (alt.message !== undefined) && (p.message = alt.message);
+                                (alt.right!== undefined) && (p.right = alt.right);
+                                (alt.right1!== undefined) && (p.right1 = alt.right1);
+                                (alt.right2!== undefined) && (p.right2 = alt.right2);
+                                (alt.right3!== undefined) && (p.right3 = alt.right3);
+                                (alt.wrong!== undefined) && (p.wrong = alt.wrong);
+                                (alt.example!== undefined) && (p.example = alt.example);
+                                (alt.message1!== undefined) && (p.message1 = alt.message1);
+                                (alt.message2!== undefined) && (p.message2 = alt.message2);
+                                (alt.message3!== undefined) && (p.message3 = alt.message3);
                             }
                         }
-                        p.jscs = val;
                     }
+                    p.jscs = val;
                 }
             }
-
             return main({options: options, props: props});
         }
     };
