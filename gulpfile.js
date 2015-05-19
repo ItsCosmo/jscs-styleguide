@@ -19,7 +19,7 @@ gulp.task("mocha", function () {
 });
 
 gulp.task("watch", function() {
-    gulp.watch(["test/**/*.js", "index.js", "templates/**/*.hbs", "props.json", "config.jscs.json"], ["mocha"]);
+    gulp.watch(["test/**/*.js", "index.js", "templates/**/*.*", "props.json", "config.jscs.json"], ["mocha"]);
 })
 
 gulp.task("default", ["mocha", "watch"]);
