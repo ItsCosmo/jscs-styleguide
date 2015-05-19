@@ -13,8 +13,6 @@ describe("jscs-styleguide", function() {
     });
     
     it("should load a handlebars template", function() {
-        var o = style.gen(jscs, {title: "My Fantastic Style Guide, by jscs-styleguide"});
-        o.should.include("Style");
-        console.log(o);
+        style.html(jscs, {title: "My Fantastic Style Guide, by jscs-styleguide"});
     });
 });
