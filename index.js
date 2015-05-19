@@ -7,12 +7,10 @@
         main = require("./templates/main.hbs"),
         attribute = require("./templates/attribute.hbs"),
         maximumLineLength = require("./templates/maximumLineLength.hbs"),
-        validateQuoteMarks = require("./templates/validateQuoteMarks.hbs"),
         props = require("./props.json");
 
     hb.registerPartial("attribute", attribute);
     hb.registerPartial("maximumLineLength", maximumLineLength);
-    hb.registerPartial("validateQuoteMarks", validateQuoteMarks);
 
     hb.registerHelper("ifTypeof", function(v1, v2, options) {
         return (typeof v1 === v2) ? options.fn(this) : options.inverse(this);
@@ -41,7 +39,12 @@
                 return options.inverse(this);
         }
     });
-
+    
+    function evaluate(str) {
+        var jscs = this.config;
+        return eval(str);
+    }
+    
     module.exports = {
         html: function(jscs, options) {
             var out = this.generateText(jscs, options);
@@ -66,24 +69,27 @@
             for (var i = 0; i < props.length; i++) {
                 var p = props[i], val = jscs[p.name];
                 if (val) {
-                    if ((p.name === "maximumLineLength")) {
+                    if (p.name === "maximumLineLength") {
                         if (typeof val === "number") {
-                            p.jscsval = {value: val}
+                            p.jscs = {value: val}
                         } else {
-                            p.jscsval = val;
-                        }
-                    } else if (p.name === "validateQuoteMarks") {
-                        if (typeof val !== "object") {
-                            p.jscsval = {mark: val};
-                        } else {
-                            p.jscsval = val;
-                        }
-                        if (p.jscsval.mark === '"') {
-                            p.jscsval.other = "'";
-                        } else if (p.jscsval.mark === "'") {
-                            p.jscsval.other = '"';
+                            p.jscs = val;
                         }
                     } else {
+                        if (p.alt) {
+                            for (var a = 0; a < p.alt.length; a++) {
+                                var alt = p.alt[a];
+                                if (evaluate.call({config: val}, alt.test)) {
+                                    alt.message && (p.message = alt.message);
+                                    alt.right &&(p.right = alt.right);
+                                    alt.wrong && (p.wrong = alt.wrong);
+                                    alt.example && (p.example = alt.example);
+                                    alt.message1 && (p.message1 = alt.message1);
+                                    alt.message2 && (p.message2 = alt.message2);
+                                    alt.message3 && (p.message3 = alt.message3);
+                                }
+                            }
+                        }
                         p.jscs = val;
                     }
                 }
