@@ -6,11 +6,9 @@
         hb = require("handlebars"),
         main = require("./templates/main.hbs"),
         attribute = require("./templates/attribute.hbs"),
-        maximumLineLength = require("./templates/maximumLineLength.hbs"),
         props = require("./props.json");
 
     hb.registerPartial("attribute", attribute);
-    hb.registerPartial("maximumLineLength", maximumLineLength);
 
     hb.registerHelper("ifTypeof", function(v1, v2, options) {
         return (typeof v1 === v2) ? options.fn(this) : options.inverse(this);
