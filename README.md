@@ -18,11 +18,13 @@ This will create a file called `styleguide.html` in the current folder.
 
 The following JSCS rules have been completed so far. More are being added every day. We will complete this!
 
+    disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
     disallowMultipleLineString
     disallowMultipleSpaces
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators
+    disallowSpacesInCallExpression
     maximumLineLength
     requireCamelCaseOrUpperCaseIdentifiers
     requireCapitalizedConstructors
@@ -31,7 +33,13 @@ The following JSCS rules have been completed so far. More are being added every 
     requireDollarBeforejQueryAssignment
     requireMultipleVarDecl
     requireOperatorBeforeLineBreak
+    requireSpaceAfterBinaryOperators
+    requireSpaceAfterKeywords
     requireSpaceBeforeBinaryOperators
+    requireSpaceBeforeBlockStatements
+    requireSpaceBeforeKeywords
+    requireSpacesInConditionalExpression
+    requireSpacesInForStatement
     validateIndentation
     validateParameterSeparator
     validateQuoteMarks
