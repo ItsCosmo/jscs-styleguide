@@ -1,5 +1,10 @@
 <li class="styleitem">
-    <p>{{{message}}}{{{message1}}}{{{message2}}}{{{message3}}}</p>
+    <p>
+    {{#each registered.message}}
+        {{partial this ../. }}
+    {{/each}}
+    {{{message}}}{{{message1}}}{{{message2}}}{{{message3}}}
+    </p>
     {{#ifTypeof jscs "[object Array]"}}
     <ul class="jscslist">
         {{#each jscs}}
@@ -21,16 +26,16 @@
             <pre><code class="lang-js">{{example}}</code></pre>
         </div>
     {{/if}}
-    {{#if right}}
+    {{#ifCond right "||" registered.right.length}} 
         <div class="right">
             <span class="heading"><span>VALID</span></span>
-            <pre><code class="lang-js">{{right}}{{right1}}</code></pre>
+            <pre><code class="lang-js">{{#each registered.right}}{{partial this ../. }}{{/each}}{{right}}{{right1}}</code></pre>
         </div>
-    {{/if}}
-    {{#if wrong}}
+    {{/ifCond}}
+    {{#ifCond wrong "||" registered.wrong.length}} 
         <div class="wrong">
             <span class="heading"><span>INVALID</span></span>
-            <pre><code>{{wrong}}</code></pre>
+            <pre><code>{{#each registered.wrong}}{{partial this ../. }}{{/each}}{{wrong}}</code></pre>
         </div>
-    {{/if}}
+    {{/ifCond}}
 </li>
