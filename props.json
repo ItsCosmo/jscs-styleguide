@@ -1,7 +1,31 @@
-[
-    {
-        "name": "maximumLineLength",
-        "alt" : [
+{
+    "disallowMixedSpacesAndTabs": {
+        "message": "Lines may not contain a mixture of spaces and tab (\\t) characacters. ",
+        "right": "    x = 1; // \\t\r    y = 2; // \\s\\s\\s\\s",
+        "wrong": "        z = 3; // \\t\\s\\s\\s\\s",
+        "alt": [
+            {
+                "test": "jscs === \"smart\"",
+                "message": "If a line in source code contains both tab (\\t) and spaces, the tabs must preceed the spaces. ",
+                "right": "      x = 1;  // \\t\r      y = 2; // \\s\\s\\s\\s\r      z = 3; // \\t\\s\\s",
+                "wrong": "      z = 3; // \\s\\s\\t"
+            }
+        ]
+    },
+    "disallowMultipleLineString": {
+        "message": "Disallow strings that span multiple lines without using concatenation. ",
+        "right": "var x = \"The \" +\r        \"Lazy Dog\";",
+        "wrong": "var x = \"The\\\r        Lazy Dog\";"         
+    },
+    "disallowMultipleSpaces": {
+        "message": "Multiple spaces or tabs are not permitted between identifiers, keywords, or any other token. ",
+        "right": "var x = \"one space between tokens\";\rfunction myfunc() {};",
+        "wrong": "var x   =  \"too many spaces\";\rfunction   bad() {};"
+    },
+    "maximumLineLength": {
+        "partials": true,
+        "message": " Lines may have a maximum of {{jscs.value}} characters. Tabs (\\t) are counted as {{jscs.tabSize}} characters. ",
+        "alt": [
             {
                 "test": "jscs.allowComments",
                 "message1": "Comments are allowed to break this rule. "
@@ -16,49 +40,49 @@
             }
         ]
     },
-    {
-        "name": "requireCamelCaseOrUpperCaseIdentifiers",
+    "requireCamelCaseOrUpperCaseIdentifiers": {
         "message": "Identifiers must be camelCased or UPPERCASE_WITH_UNDERSCORES",
         "right": "var camelCase = 0;\rvar CamelCase = 1;\rvar _camelWithUnderscore = 2;\rvar UPPER_CASE = 3;",
         "wrong": "var lower_case = 0;\rvar Mixed_case = 2;\rvar mixed_Case = 3;"
     },
-    {
-        "name": "requireCapitalizedConstructors",
+    "requireCapitalizedConstructors": {
         "message": " All constructors except for <code>this</code> must be capitalized.",
         "right": "var x = new A();\rvar y = new this();",
         "wrong": "var x = new a();"
     },
-    {
-        "name": "requireCommaBeforeLineBreak",
+    "requireCommaBeforeLineBreak": {
         "message": "When a list is split over multiple lines, the comma separator must come at the end of a line.",
-        "right":"var x = {\r    one: 1,\r    two: 2,\r    three: 3\r};",
-        "wrong":"var x = {\r    one: 1\r    ,two: 2\r    ,three: 3\r};"
+        "right": "var x = {\r    one: 1,\r    two: 2,\r    three: 3\r};",
+        "wrong": "var x = {\r    one: 1\r    ,two: 2\r    ,three: 3\r};"
     },
-    {
-        "name": "requireCurlyBraces",
-        "message": "Curly braces are required after the following statements:",
+    "requireCurlyBraces": {
+        "message": "Curly braces are required after the following statements: ",
         "right": "if (condition) {\r    someThing();\r}",
-        "wrong": "if (condition) someThing();"
-    },
-    {
-        "name": "requireDollarBeforejQueryAssignment",
+        "wrong": "if (condition) someThing();",
         "alt": [
             {
-                "test" : "jscs === \"ignoreProperties\"",
+                "test": "typeof jscs === \"boolean\"",
+                "message": "Curly braces are required for all block statements. "
+            }
+        ]
+    },
+    "requireDollarBeforejQueryAssignment": {
+        "alt": [
+            {
+                "test": "jscs === \"ignoreProperties\"",
                 "message": "Use $ to begin a variable name which is a jQuery assignment. This does not apply to object properties.",
                 "right": "var $x = $(\".foo\");\rvar y = {\r    x = $(\".foo\")\r};",
                 "wrong": "var y = $(\".foo\");"
             },
             {
-                "test" : "jscs === true",
+                "test": "jscs === true",
                 "message": "Use $ to begin a variable or object property name which is a jQuery assignment.",
                 "right": "var $x = $(\".foo\");\rvar y = {\r    $x = $(\".foo\")\r};",
                 "wrong": "var y = $(\".foo\");\rvar y = {\r    x = $(\".foo\")\r};"
             }
         ]
     },
-    {
-        "name": "requireMultipleVarDecl",
+    "requireMultipleVarDecl": {
         "alt": [
             {
                 "test": "jscs === true",
@@ -74,24 +98,32 @@
             }
         ]
     },
-    {
-        "name": "requireOperatorBeforeLineBreak",
+    "requireOperatorBeforeLineBreak": {
         "message": "When expressions involving binary operators are split between lines, the operator must appear before the line break.",
         "right": "var x = y ?\r        1 : 2;",
         "wrong": "var x = y\r        ? 1 : 2;"
     },
-    {
-        "name": "requireSpaceBeforeBinaryOperators",
+    "requireSpaceBeforeBinaryOperators": {
         "message": "Do not allow 'sticky' binary operators. The following operators must be preceeded by a space:",
         "right": "x != y;",
         "wrong": "x!= y;"
     },
-    {
-        "name": "validateIndentation",
+    "validateIndentation": {
         "alt": [
             {
-                "test": "jscs === \"\t\"",
-                "message": "Switch and block statements must be indented with a TAB (\\t) character. ",
+                "test": "true",
+                "right": "if(a) {\r{{spaces jscs.value}}b = c; \\\\ line is indented with {{jscs.value}} spaces\r}",
+                "wrong": "if(a) {\r{{spaces (add jscs.value 2)}}b = c; \\\\ line is indented with {{add jscs.value 2}} spaces\r}",
+                "partials": true
+            },
+            {
+                "test": "typeof jscs.value === \"number\"",
+                "message": "Block statements must be indented with {{ jscs.value }} space characters. ",
+                "partials": true
+            },
+            {
+                "test": "jscs.value === \"\t\"",
+                "message": "Block statements must be indented with a tab (\\t) character. ",
                 "right": "if(a) {\r    b = c; \\\\ line is indented with \\t\r}",
                 "wrong": "if(a) {\r    b = c; \\\\ line is indented with spaces\r}"
             },
@@ -101,30 +133,34 @@
             }
         ]
     },
-    {
-        "name": "validateQuoteMarks",
+    "validateParameterSeparator": {
+        "message": "Function parameters must be separated by <code>\"{{jscs}}\"</code>. Newlines are ignored. ",
+        "right": "doSomething(1{{jscs}}2{{jscs}}3);\rother(1{{jscs}}\r    2{{jscs}}\r    3);",
+        "wrong": "doSomething(1{{add jscs \" \"}}2{{add jscs \" \"}}3) // extra space between parameters",
+        "partials": true
+    },
+    "validateQuoteMarks": {
+        "right": "var s = {{jscs.mark}}A String Value{{jscs.mark}};",
+        "right1": "\rvar s = {{othermark jscs.mark}}A String containing {{jscs.mark}}quote mark{{jscs.mark}}{{othermark jscs.mark}};",
+        "wrong": "var s = {{othermark jscs.mark}}A String Value{{othermark jscs.mark}};",
+        "partials": true,
         "alt": [
             {
-                "test": "jscs.mark === '\"'" ,
-                "message": "Strings must be quoted with double-quotes. ",
-                "right": "var s = \"A String Value\";",
-                "right1":"\rvar s = 'A String containing \"quote mark\"';",
-                "wrong": "var s = 'A String Value';"
+                "test": "jscs.mark === '\"'",
+                "message": "Strings must be quoted with double-quotes. "
             },
             {
-                "test": "jscs.mark === \"'\"" ,
-                "message": "Strings must be quoted with single-quote (apostrophe). ",
-                "right": "var s = 'A String Value';",
-                "right1": "\rvar s = \"A String containing 'quote mark'\";",
-                "wrong": "var s = \"A String Value\";"
+                "test": "jscs.mark === \"'\"",
+                "message": "Strings must be quoted with single-quote (apostrophe). "
             },
             {
-                "test": "jscs.mark === true" ,
+                "test": "jscs.mark === true",
                 "message": "Strings must be quoted with the quote first encountered in the source code. ",
                 "example": "var s = \"First quote mark is double\";",
                 "right": "var s = \"A String Value\";",
                 "right1": "\rvar s = 'A String containing \"quote mark\"';",
-                "wrong": "var s = 'A String Value';"
+                "wrong": "var s = 'A String Value';",
+                "partials": false
             },
             {
                 "test": "jscs.escape",
@@ -136,4 +172,4 @@
             }
         ]
     }
-]
+}
