@@ -3,7 +3,7 @@
     var sub = require("string-substitute");
 
     function repeat(str, n) {
-        return Array(n + 1).join(str);
+        return new Array(n + 1).join(str);
     }
 
     function othermark(mark) {
@@ -46,7 +46,7 @@
             }
         },
 
-        disallowMultipleLineStrings: function(jscs) {
+        disallowMultipleLineStrings: function() {
             var message, right, wrong;
 
             message = "Use concatenation to span a string across multiple lines.";
@@ -59,14 +59,14 @@
                 wrong: wrong
             }
         },
-        
-        disallowMultipleSpaces: function(jscs) {
+
+        disallowMultipleSpaces: function() {
             var message, right, wrong;
 
             message = "Only one space is allowed between identifiers, keywords, or any other tokens.";
             right = "var x = 5;";
             wrong = "var  x = 5;\rvar x  = 5;\rvar x =  5;";
-            
+
             return {
                 message: message,
                 right: right,
@@ -119,7 +119,7 @@
             }
         },
 
-        disallowSpacesInCallExpression: function(jscs) {
+        disallowSpacesInCallExpression: function() {
             var message, right, wrong;
 
             message = "Do not put spaces before () in a function call.";
@@ -133,6 +133,11 @@
             }
         },
 
+        /**
+         *
+         * @param {{allowComments, allowUrlComments, allowRegex}} jscs
+         * @returns {{message: (string|*), message1: *, message2: *}}
+         */
         maximumLineLength: function(jscs) {
             var message,
                 message1,
@@ -156,11 +161,11 @@
             return {
                 message: message,
                 message1: message1,
-                message2: message2,
+                message2: message2
             }
         },
 
-        requireCamelCaseOrUpperCaseIdentifiers: function(jscs) {
+        requireCamelCaseOrUpperCaseIdentifiers: function() {
             var message, right, wrong;
 
             message = "Identifiers must be camelCased or UPPERCASE_WITH_UNDERSCORES";
@@ -174,12 +179,12 @@
             }
         },
 
-        requireCapitalizedConstructors: function(jscs) {
+        requireCapitalizedConstructors: function() {
             var message, right, wrong;
 
-            message = " All constructors except for <code>this</code> must be capitalized.",
-                right = "var x = new A();\rvar y = new this();",
-                wrong = "var x = new a();"
+            message = " All constructors except for <code>this</code> must be capitalized.";
+            right = "var x = new A();\rvar y = new this();";
+            wrong = "var x = new a();";
 
             return {
                 message: message,
@@ -188,7 +193,7 @@
             }
         },
 
-        requireCommaBeforeLineBreak: function(jscs) {
+        requireCommaBeforeLineBreak: function() {
             var message, right, wrong;
 
             message = "When a list is split over multiple lines, the comma separator must come at the end of a line.";
@@ -261,7 +266,7 @@
             }
         },
 
-        requireOperatorBeforeLineBreak: function(jscs) {
+        requireOperatorBeforeLineBreak: function() {
             var message, right, wrong;
 
             message = "When expressions involving binary operators are split between lines, the operator must appear before the line break.";
@@ -274,10 +279,10 @@
                 wrong: wrong
             }
         },
-        
+
         requireSpaceAfterBinaryOperators: function(jscs) {
             var message, right, wrong;
-            
+
             if (jscs === true) {
                 message = "A space is required after all binary operators.";
                 right = "x + y;";
@@ -286,8 +291,8 @@
                 message = "A space is required after the following binary operators:";
                 right = sub("x {0} y;", jscs[0]);
                 wrong = sub("x {0}y;", jscs[0]);
-            }   
-            
+            }
+
             return {
                 message: message,
                 right: right,
@@ -295,17 +300,17 @@
                 jscs: jscs
             }
         },
-        
+
         requireSpaceAfterKeywords: function(jscs) {
             var message, right, wrong;
 
             if (jscs === true) {
                 jscs = ["do", "for", "if", "else", "switch", "case", "try", "catch",
-                "void", "while", "with", "return", "typeof", "function"];
+                    "void", "while", "with", "return", "typeof", "function"];
             }
-            
+
             message = "The following keywords must be followed by a space:";
-            
+
             if (jscs.indexOf("if") >= 0) {
                 right = "if (x) {\r    x++;\r}";
                 wrong = "if(x) {\r    x++;\r}";
@@ -336,38 +341,38 @@
                 jscs: jscs
             }
         },
-        
+
         requireSpaceBeforeBlockStatements: function(jscs) {
-            var message, right, wrong, spaces = jscs===true?1:jscs;
-            
+            var message, right, wrong, spaces = jscs === true ? 1 : jscs;
+
             message = sub("{0} space{1} {2} required before the opening brace of a block statement.",
-                spaces===1?"A":"At least "+spaces,
-                spaces===1?"":"s",
-                spaces===1?"is":"are");
-            
+                spaces === 1 ? "A" : "At least " + spaces,
+                spaces === 1 ? "" : "s",
+                spaces === 1 ? "is" : "are");
+
             right = sub("if (condition){0}{\r    foo();\r}", repeat(" ", spaces));
-            wrong = sub("if (condition){0}{\r    foo();\r}", repeat(" ", spaces-1));
-            
+            wrong = sub("if (condition){0}{\r    foo();\r}", repeat(" ", spaces - 1));
+
             return {
                 message: message,
                 right: right,
                 wrong: wrong
             }
         },
-        
+
         requireSpaceBeforeKeywords: function(jscs) {
             var message, right, wrong;
-            
-            if(jscs === true) {
+
+            if (jscs === true) {
                 message = "All keywords must be preceeded by a space.";
                 right = "} else {\r    x++;\r}";
                 wrong = "}else {\r    x++;\r}";
             } else {
-                message = "The following keywords must be preceeded by a space:"
+                message = "The following keywords must be preceeded by a space:";
                 right = sub("} {0} {", jscs[0]);
                 wrong = sub("}{0} {", jscs[0]);
             }
-            
+
             return {
                 message: message,
                 right: right,
@@ -375,24 +380,24 @@
                 jscs: jscs
             }
         },
-        
+
         requireSpacesInConditionalExpression: function(jscs) {
-            var message, right, wrong, s1=" ", s2=" ", s3=" ", s4=" ";
-            
+            var message, right, wrong;
+
             if (jscs === true) {
                 jscs = {afterTest: true, beforeConsequent: true, afterConsequent: true, beforeAlternate: true};
             }
-            
+
             message = "In the conditional (ternary) operator, spaces are to be included as shown.";
-            
+
             right = sub("var x = a{0}?{1}b{2}:{3}c;",
-                jscs.afterTest?" ":"",
-                jscs.beforeConsequent?" ":"",
-                jscs.afterConsequent?" ":"",
-                jscs.beforeAlternate?" ":"");
+                jscs.afterTest ? " " : "",
+                jscs.beforeConsequent ? " " : "",
+                jscs.afterConsequent ? " " : "",
+                jscs.beforeAlternate ? " " : "");
 
             wrong = "var x = a?b:c;";
-            
+
             return {
                 message: message,
                 right: right,
@@ -400,20 +405,25 @@
             }
         },
 
-        requireSpacesInForStatement: function(jscs) {
+        requireSpacesInForStatement: function() {
             var message, right, wrong;
-            
+
             message = "A space is required between the clauses of a <code>for</code> statement (after the semicolons).";
             right = "for(var i = 0; i < len; i++) {\r    x++;\r}";
             wrong = "for(var i = 0;i < len;i++) {\r    x++;\r}";
-            
+
             return {
                 message: message,
                 right: right,
                 wrong: wrong
             }
         },
-        
+
+        /**
+         *
+         * @param {{includeEmptyLines}} jscs
+         * @returns {{message: *, message1: *, right: *, wrong: *}}
+         */
         validateIndentation: function(jscs) {
             var message, message1, right, wrong;
 
@@ -495,6 +505,7 @@
                 example: example
             }
         }
-        
+
     }
 }());
+
