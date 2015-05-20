@@ -28,13 +28,13 @@
     {{/if}}
     {{#ifCond right "||" registered.right.length}} 
         <div class="right">
-            <span class="heading"><span>VALID</span></span>
+            <span class="heading"><span>{{options.valid_keyword}}</span></span>
             <pre><code class="lang-js">{{#each registered.right}}{{partial this ../. }}{{/each}}{{right}}{{right1}}</code></pre>
         </div>
     {{/ifCond}}
     {{#ifCond wrong "||" registered.wrong.length}} 
         <div class="wrong">
-            <span class="heading"><span>INVALID</span></span>
+            <span class="heading"><span>{{options.invalid_keyword}}</span></span>
             <pre><code>{{#each registered.wrong}}{{partial this ../. }}{{/each}}{{wrong}}</code></pre>
         </div>
     {{/ifCond}}

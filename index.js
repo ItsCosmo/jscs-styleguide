@@ -96,6 +96,9 @@
         generateText: function(jscs, options) {
             var options = options || {};
             options.title = options.title || "Style Guide";
+            options.theme = options.theme || "default";
+            options.valid_keyword = options.valid_keyword || "VALID";
+            options.invalid_keyword = options.invalid_keyword || "INVALID";
 
             for (var name in props) {
                 var p = props[name], val = jscs[name];
@@ -133,7 +136,7 @@
                             }
                         }
                     }
-                    // process partials if required
+                    // process message strings as partials if required
                     if (p.partials) {
                         p.registered = { 
                             "message": [],

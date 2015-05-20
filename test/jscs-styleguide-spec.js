@@ -13,6 +13,6 @@ describe("jscs-styleguide", function() {
     });
     
     it("should load a handlebars template", function() {
-        style.html(jscs, {title: "My Fantastic Style Guide, by jscs-styleguide"});
+        style.html(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide, by jscs-styleguide"});
     });
 });

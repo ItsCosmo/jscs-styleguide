@@ -2,12 +2,13 @@
 <html>
 <head>
     <title>{{options.title}}</title>
+    <link rel="stylesheet" type="text/css" href="{{options.theme}}.css" />
 </head>
-<body>
+<body class="{{options.theme}}">
     <h1 class="title">{{options.title}}</h1>
     <ol>
         {{#each props}}
-            {{>attribute}}
+            {{>attribute options=../options}}
         {{/each}}
     </ol>
 </body>

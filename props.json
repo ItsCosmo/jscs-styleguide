@@ -13,7 +13,7 @@
         ]
     },
     "disallowMultipleLineString": {
-        "message": "Disallow strings that span multiple lines without using concatenation. ",
+        "message": "Use concatenation to span a string across multiple lines. ",
         "right": "var x = \"The \" +\r        \"Lazy Dog\";",
         "wrong": "var x = \"The\\\r        Lazy Dog\";"         
     },
@@ -21,6 +21,48 @@
         "message": "Multiple spaces or tabs are not permitted between identifiers, keywords, or any other token. ",
         "right": "var x = \"one space between tokens\";\rfunction myfunc() {};",
         "wrong": "var x   =  \"too many spaces\";\rfunction   bad() {};"
+    },
+    "disallowSpaceAfterObjectKeys": {
+        "message": "Don't put spaces between an object key and the following colon (:).",
+        "right": "var x = {a: 1};\rvar y = {\r    a: 1\r};",
+        "wrong": "var x = {a : 1};\rvar y = {\r    a : 1\r};",
+        "alt": [
+            {
+                "test": "true"
+            },
+            {
+                "test": "jscs === \"ignoreSingleLine\"",
+                "message1": " Ignored if the object takes up only a single line. ",
+                "right": "var x = {a : 1};\rvar y = {\r    a: 1\r};",
+                "wrong": "var y = {\r    a : 1\r};"
+
+            },
+            {
+                "test": "jscs === \"ignoreMultiLine\"",
+                "message1": " Ignored if the object takes up multiple lines. ",
+                "right": "var x = {a: 1};\rvar y = {\r    a : 1\r};",
+                "wrong": "var x = {a : 1};"
+            }
+        ]
+    },
+    "disallowSpaceAfterPrefixUnaryOperators": {
+        "alt": [
+            {
+                "test": "true",
+                "message": "Do not put spaces after the following unary operators:",
+                "right": "var x = {{jscs.[0]}}y;",
+                "wrong": "var y = {{jscs.[0]}} y;",
+                "partials": true
+            },
+            {
+                "test": " typeof jscs === \"boolean\"",
+                "message": "Do not put any spaces after a unary prefix operator.",
+                "right": "var x = ++y;",
+                "wrong": "var x = ++ y;",
+                "partials": false
+            }
+
+        ]
     },
     "maximumLineLength": {
         "partials": true,

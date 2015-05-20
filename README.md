@@ -21,6 +21,8 @@ The following JSCS rules have been completed so far. More are being added every 
     disallowMixedSpacesAndTabs
     disallowMultipleLineString
     disallowMultipleSpaces
+    disallowSpaceAfterObjectKeys
+    disallowSpaceAfterPrefixUnaryOperators
     maximumLineLength
     requireCamelCaseOrUpperCaseIdentifiers
     requireCapitalizedConstructors
