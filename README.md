@@ -1,5 +1,5 @@
 # jscs-styleguide
-Generate a human-readable Style Guide from a JSCS configuration. As of now, this only supports a small number of JSCS attributes, but more are being added every day. 
+Generate a human-readable Style Guide from a JSCS configuration.  
 
 ## Installation
 
@@ -13,3 +13,25 @@ Generate a human-readable Style Guide from a JSCS configuration. As of now, this
     style.html(jscs, {title: "My Style Guide"});
 
 This will create a file called `styleguide.html` in the current folder.
+
+## TODO
+
+The following JSCS rules have been completed so far. More are being added every day. We will complete this!
+
+    disallowMixedSpacesAndTabs
+    disallowMultipleLineString
+    disallowMultipleSpaces
+    maximumLineLength
+    requireCamelCaseOrUpperCaseIdentifiers
+    requireCapitalizedConstructors
+    requireCommaBeforeLineBreak
+    requireCurlyBraces
+    requireDollarBeforejQueryAssignment
+    requireMultipleVarDecl
+    requireOperatorBeforeLineBreak
+    requireSpaceBeforeBinaryOperators
+    validateIndentation
+    validateParameterSeparator
+    validateQuoteMarks
+    
+
