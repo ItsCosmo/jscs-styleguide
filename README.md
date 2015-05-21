@@ -10,9 +10,14 @@ Generate a human-readable Style Guide from a JSCS configuration.
     var style = require("jscs-styleguide");
     var jscs = require("./path/to/config.jscs.json");
 
+    // get html body only for stylesheet, as string
+    style.body(jscs, {title: "My Style Guide"});
+    
+    // get html document for stylesheet, as string
     style.html(jscs, {title: "My Style Guide"});
-
-This will create a file called `styleguide.html` in the current folder.
+    
+    // create a file called stylesheet.html in current folder
+    style.file(jscs, {title: "My Style Guide"});
 
 ## TODO
 
@@ -20,12 +25,20 @@ The following JSCS rules have been completed so far. More are being added every 
 
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
+    disallowMultipleLineBreaks
     disallowMultipleLineString
     disallowMultipleSpaces
+    disallowNewlineBeforeBlockStatements
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators
     disallowSpacesInAnonymousFunctionExpression
     disallowSpacesInCallExpression
+    disallowSpacesInFunction
+    disallowSpacesInsideArrayBrackets
+    disallowSpacesInsideObjectBrackets
+    disallowSpacesInsideParentheses
+    disallowTrailingComma
+    disallowYodaConditions
     maximumLineLength
     requireCamelCaseOrUpperCaseIdentifiers
     requireCapitalizedConstructors
