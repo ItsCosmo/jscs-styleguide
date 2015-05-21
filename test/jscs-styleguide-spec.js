@@ -11,8 +11,16 @@ describe("jscs-styleguide", function() {
     it("should exist", function() {
         style.should.exist;
     });
+
+    it("should generate an HTML body", function() {
+        var body = style.body(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide"});
+    });
+
+    it("should generate an HTML document", function() {
+        var html = style.html(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide"});
+    });
     
-    it("should load a handlebars template", function() {
-        style.html(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide, by jscs-styleguide"});
+    it("should load create an html file on disk", function() {
+        style.file(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide"});
     });
 });
