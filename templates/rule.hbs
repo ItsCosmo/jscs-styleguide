@@ -1,0 +1,37 @@
+<li class="styleitem">
+    <p class="description">
+    {{{message}}}{{{message1}}}{{{message2}}}{{{message3}}}
+    </p>
+    {{#if jscs.length }}
+    <ul class="jscslist">
+        {{#each jscs}}
+            <li>"{{ this }}"</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+    {{#if jscs.allExcept}}
+        <ul>
+            {{#each jscs.allExcept}}
+                <li>"{{ this }}"</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if example}}
+        <div class="example">
+            <span class="heading"><span>EXAMPLE</span></span>
+            <pre><code class="lang-js">{{example}}</code></pre>
+        </div>
+    {{/if}}
+    {{#if right}} 
+        <div class="right">
+            <span class="heading"><span>{{options.valid_keyword}}</span></span>
+            <pre><code class="lang-js">{{right}}{{right1}}</code></pre>
+        </div>
+    {{/if}}
+    {{#if wrong}} 
+        <div class="wrong">
+            <span class="heading"><span>{{options.invalid_keyword}}</span></span>
+            <pre><code>{{wrong}}{{wrong1}}</code></pre>
+        </div>
+    {{/if}}
+</li>
