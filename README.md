@@ -11,10 +11,10 @@ Generate a human-readable Style Guide from a JSCS configuration.
     var jscs = require("./path/to/config.jscs.json");
 
     // get html body only for stylesheet, as string
-    style.body(jscs, {title: "My Style Guide"});
+    var body = style.body(jscs, {title: "My Style Guide"});
     
     // get html document for stylesheet, as string
-    style.html(jscs, {title: "My Style Guide"});
+    var html = style.html(jscs, {title: "My Style Guide"});
     
     // create a file called stylesheet.html in current folder
     style.file(jscs, {title: "My Style Guide"});
