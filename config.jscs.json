@@ -76,20 +76,19 @@
     "requireSpacesInFunctionExpression": {
         "beforeOpeningCurlyBrace": true
     },
-
     "disallowSpacesInAnonymousFunctionExpression": {
         "beforeOpeningRoundBrace": true
     },
     "disallowSpacesInFunction": {
         "beforeOpeningRoundBrace": true
     },
-    "disallowSpacesInsideObjectBrackets": "all",
+    "disallowSpacesInsideObjectBrackets": {
+        "allExcept": ["{"]   
+    },
     "disallowSpacesInsideArrayBrackets": "all",
     "disallowSpacesInsideParentheses": true,
-
     "disallowMultipleLineBreaks": true,
     "disallowNewlineBeforeBlockStatements": true,
     "disallowTrailingComma": true,
-
     "disallowYodaConditions": true
 }
