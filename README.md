@@ -24,6 +24,7 @@ The following JSCS rules have been completed so far. More are being added every 
     disallowMultipleSpaces
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators
+    disallowSpacesInAnonymousFunctionExpression
     disallowSpacesInCallExpression
     maximumLineLength
     requireCamelCaseOrUpperCaseIdentifiers
@@ -31,6 +32,7 @@ The following JSCS rules have been completed so far. More are being added every 
     requireCommaBeforeLineBreak
     requireCurlyBraces
     requireDollarBeforejQueryAssignment
+    requireLineFeedAtFileEnd
     requireMultipleVarDecl
     requireOperatorBeforeLineBreak
     requireSpaceAfterBinaryOperators
@@ -38,8 +40,11 @@ The following JSCS rules have been completed so far. More are being added every 
     requireSpaceBeforeBinaryOperators
     requireSpaceBeforeBlockStatements
     requireSpaceBeforeKeywords
+    requireSpaceBeforeObjectValues
+    requireSpaceBetweenArguments
     requireSpacesInConditionalExpression
     requireSpacesInForStatement
+    requireSpacesInFunctionExpression
     validateIndentation
     validateParameterSeparator
     validateQuoteMarks

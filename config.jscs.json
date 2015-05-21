@@ -33,7 +33,6 @@
     "disallowMixedSpacesAndTabs": true,
     "disallowMultipleSpaces": true,
     "disallowSpaceAfterObjectKeys": true,
-
     "disallowSpaceAfterPrefixUnaryOperators": ["!", "--", "++"],
     "disallowSpacesInCallExpression": true,
     "disallowKeywordsOnNewLine": ["else"],
@@ -77,6 +76,7 @@
     "requireSpacesInFunctionExpression": {
         "beforeOpeningCurlyBrace": true
     },
+
     "disallowSpacesInAnonymousFunctionExpression": {
         "beforeOpeningRoundBrace": true
     },

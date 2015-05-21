@@ -39,6 +39,7 @@
                 right = "   x = 1; // \\t\r   y = 2; // \\s\\s\\s\\s";
                 wrong = "     z = 3; // \\t\\s";
             }
+
             return {
                 message: message,
                 right: right,
@@ -503,6 +504,92 @@
                 right1: right1,
                 wrong: wrong,
                 example: example
+            }
+        },
+
+        requireLineFeedAtFileEnd: function () {
+            var message;
+
+            message = "The last  line of a source file must end with a line feed.";
+
+            return {
+                message: message
+            }
+        },
+
+        requireSpaceBeforeObjectValues: function () {
+            var message, right, wrong;
+
+            message = "In an object literal, there must be a space after the key.";
+            right = "var x = {a: 1};";
+            wrong = "var x = {a:1};";
+
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        requireSpaceBetweenArguments: function () {
+            var message, right, wrong;
+
+            message = "When calling a function, there must be a space after each argument separator.";
+            right = "foo(a, b);";
+            wrong = "foo(a,b);";
+
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        requireSpacesInFunctionExpression: function (jscs) {
+            var message, right, wrong;
+
+            if (jscs === true || (jscs.beforeOpeningRoundBrace && jscs.beforeOpeningCurlyBrace)) {
+                message = "There must be a space before both the opening paren and the opening curly brace in a <code>function</code> expression.";
+                right = "var x = function () {};";
+                wrong = "var x = function() {};\rvar x = function (){};\rvar x = function(){};";
+            } else if (jscs.beforeOpeningRoundBrace) {
+                message = "There must be a space before the opening paren in a <code>function</code> expression.";
+                right = "var x = function (){};";
+                wrong = "var x = function(){};";
+            } else if (jscs.beforeOpeningCurlyBrace) {
+                message = "There must be a space before the opening curly brace in a <code>function</code> expression.";
+                right = "var x = function() {};";
+                wrong = "var x = funciton(){};";
+            }
+
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowSpacesInAnonymousFunctionExpression: function (jscs) {
+            var message, right, wrong;
+
+            if (jscs === true || (jscs.beforeOpeningRoundBrace && jscs.beforeOpeningCurlyBrace)) {
+                message = "There must not be a space before either the opening paren or opening curly brace in a <code>function</code> expression.";
+                right = "var x = function(){};";
+                wrong = "var x = function (){};\rvar x = function() {};";
+            } else if (jscs.beforeOpeningRoundBrace) {
+                message = "There must not be a space before the opening paren in a <code>function</code> expression.";
+                right = "var x = function() {};";
+                wrong = "var x = function () {};";
+            } else if (jscs.beforeOpeningCurlyBrace) {
+                message = "There must not be a space before the opening curly brace in a <code>function</code> expression.";
+                right = "var x = function (){};";
+                wrong = "var x = function () {};";
+            }
+
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
             }
         }
 
