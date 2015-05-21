@@ -180,17 +180,24 @@
             }
         },
 
-        requireCapitalizedConstructors: function() {
-            var message, right, wrong;
+        requireCapitalizedConstructors: function(jscs) {
+            var message, message1, right, wrong;
 
             message = " All constructors except for <code>this</code> must be capitalized.";
             right = "var x = new A();\rvar y = new this();";
             wrong = "var x = new a();";
+            
+            if (jscs.allExcept) {
+                message = "Constructors except for <code>this</code> must be capitalized.";
+                message1 = " An exception is made for the following identifiers:"
+            }
 
             return {
                 message: message,
+                message1: message1,
                 right: right,
-                wrong: wrong
+                wrong: wrong,
+                jscs: jscs
             }
         },
 
@@ -545,6 +552,11 @@
             }
         },
 
+        /**
+         * 
+         * @param {{beforeOpeningRoundBrace, beforeOpeningCurlyBrace}} jscs
+         * @returns {{message: *, right: *, wrong: *}}
+         */
         requireSpacesInFunctionExpression: function (jscs) {
             var message, right, wrong;
 
@@ -591,8 +603,183 @@
                 right: right,
                 wrong: wrong
             }
-        }
+        },
 
+        disallowSpacesInFunction: function(jscs) {
+            var message, right, wrong;
+            
+            if (jscs.beforeOpeningRoundBrace && jscs.beforeOpeningCurlyBrace) {
+                message = "Do not put a space before either the opening paren or opening curly brace in a <code>function</code> expression or definition.";
+                right = "function a(){};\rvar x = function() {};\rvar x = function a(){};";
+                wrong = "function a (){};\rfunction a() {};";
+            } else if (jscs.beforeOpeningRoundBrace) {
+                message = "Do not put a space before the opening paren in a <code>function</code> expression or definition.";
+                right = "function a(){};\rfunction a() {};\rvar x = function() {};\rvar x = function a(){};";
+                wrong = "function a (){};\rfunction a () {};";
+            } else if (jscs.beforeOpeningCurlyBrace) {
+                message = "Do not put a space before the opening curly brace in a <code>function</code> expression or definition.";
+                right = "function a(){};\rfunction a (){};\rvar x = function(){};\rvar x = function a(){};";
+                wrong = "function a() {};\rfunction a () {};";
+            }
+            
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowSpacesInsideObjectBrackets: function(jscs) {
+            var message, message1, right, wrong;
+
+            message = "In an object literal, do not put a space after the opening curly brace, or before the closing curly brace";
+            if (jscs === "all" || jscs === true) {
+                message1 = ".";                
+                right = "var x = {a: 1};\rvar x = {a: {b: 2}};";
+                wrong = "var x = { a: 1};\rvar x = {a: 1 };\rvar x = { a: {b: 1 }};"
+            } else if (jscs === "nested") {
+                message1 = ", except when there are multiple closing braces in a row.";
+                right = "var x = {a: 1};\rvar x = {a: {b: 2} };";
+                wrong = "var x = { a: 1};\rvar x = {a: 1 };\rvar x = { a: {b: 1 }};"
+            } else if (jscs.allExcept) {
+                if (jscs.allExcept.indexOf("}") >= 0 ) {
+                    message = "In an object literal, do not put a space after the opening curly brace.";
+                    right = "var x = {a: 1};";
+                    wrong = "var x = { a: 1};";
+                } else if (jscs.allExcept.indexOf("{") >= 0) {
+                    message = "In an object literal, do not put a space before the closing curly brace.";
+                    right = "var x = {a: 1};";
+                    wrong = "var x =  {a: 1 };";
+                }
+                // don't want to show a list of exceptions
+                jscs.allExcept = false;
+            }
+            
+            return {
+                message: message,
+                message1: message1,
+                right: right,
+                wrong: wrong,
+                jscs: jscs
+            }
+        },
+        
+        disallowSpacesInsideArrayBrackets: function(jscs) {
+            var message, message1, right, wrong;
+
+            message = "In an Array, do not put a space after the opening square bracket, or before the closing square bracket";
+            if (jscs === "all" || jscs === true) {
+                message1 = ".";
+                right = "var x = [1, 2];\rvar x = [1, [2, 3]];";
+                wrong = "var x = [ 1, 2];\rvar x = [1, 2 ];\rvar x = [1, [ 2, 3 ] ];"
+            } else if (jscs === "nested") {
+                message1 = ", except when there are multiple closing brackets in a row.";
+                right = "var x = [1, 2];\rvar x = [1, [2, 3] ];";
+                wrong = "var x = [1, 2 ];\rvar x = [ 1, 2];\rvar x = [1, [2, 3 ]];"
+            } else if (jscs.allExcept) {
+                if (jscs.allExcept.indexOf("]") >= 0 ) {
+                    message = "In an Array, do not put a space after the opening square bracket.";
+                    right = "var x = [1, 2];";
+                    wrong = "var x = [ 1, 2];";
+                } else if (jscs.allExcept.indexOf("{") >= 0) {
+                    message = "In an Array, do not put a space before the closing square bracket.";
+                    right = "var x = [1, 2];";
+                    wrong = "var x = [1, 2 ];";
+                }
+            }                       
+
+            return {
+                message: message,
+                message1: message1,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowSpacesInsideParentheses: function(jscs) {
+            var message, message1, right, wrong;
+
+            message = "In an expression, do not put a space after the opening paren, or before the closing paren";
+            if (jscs === true) {
+                message1 = ".";
+                right = "var x = (3 + 4) * 5;\rvar x = (3 * (4 + 5)) * 6;";
+                wrong = "var x = ( 3 + 4);\rvar x = (3 + 4 );\rvar x = (3 + ( 4 * 5) ) / 6;"
+            } else if (jscs.only) {
+                if (jscs.only.indexOf("(") >= 0 ) {
+                    message = "In an expression, do not put a space after the opening paren.";
+                    right = "var x = (3 + 4) * 5;";
+                    wrong = "var x = ( 3 + 4) * 5;";
+                } else if (jscs.only.indexOf(")") >= 0) {
+                    message = "In an expression, do not put a space before the closing paren.";
+                    right = "var x = (3 + 4) * 5;";
+                    wrong = "var x = (3 + 4 ) * 5;";
+                }
+            }
+
+            return {
+                message: message,
+                message1: message1,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowMultipleLineBreaks: function() {
+            var message, right, wrong;
+            
+            message = "Do not put multiple empty lines in a row.";
+            right = "var x = 1;\r\rx++; // preceeding line is empty";
+            wrong = "var x = 1;\r\r\rx++; // preceeding two lines are empty";
+            
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowNewlineBeforeBlockStatements: function() {
+            var message, right, wrong;
+            
+            message = "Do not put a line feed before opening curly brace of block statememts.";
+            right = "if (condition) {\r    x++;\r}";
+            wrong = "if (condition)\r{\r    x++;\r}";
+            
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowTrailingComma: function() {
+            var message, right, wrong;
+
+            message = "Do not put a comma after the last element in an array or object literal.";
+            right = "var x = {\r    a: 1,\r    b: 2\r};\rvar x = [\r    \"A\",\r    \"B\",\r    \"C\"\r];";
+            wrong = "var x = {\r    a: 1,\r    b: 2,\r};\rvar x = [\r    \"A\",\r    \"B\",\r    \"C\",\r];";
+            
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowYodaConditions: function() {
+            var message, right, wrong;
+            
+            message = "So-called \"Yoda conditions\" are not allowed. When doing a boolean comparision," +
+                    " the constant, if any, should be on the right";
+            right = "if (a === 1) {\r    return;\r}";
+            wrong = "if (1 === a) {\r    return;\r}";
+            
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        }
     }
 }());
 
