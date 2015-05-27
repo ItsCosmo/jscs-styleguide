@@ -23,6 +23,8 @@ Generate a human-readable Style Guide from a JSCS configuration.
 
 The following JSCS rules have been completed so far. More are being added every day. We will complete this!
 
+    disallowAnonymousFunctions
+    disallowCapitalizedComments
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
     disallowMultipleLineBreaks

@@ -15,15 +15,12 @@
     "requireDollarBeforejQueryAssignment": true,
     "requireMultipleVarDecl": true,
     "maximumLineLength": {
-        "value": 100,
+        "value": 160,
         "tabSize": 4,
         "allowComments": true,
         "allowRegex": true
     },
-    "validateIndentation": {
-        "value": 4,
-        "includeEmptyLines": true
-    },
+    "validateIndentation": 4,
     "validateQuoteMarks": {
         "mark": "\"",
         "escape": true

@@ -514,7 +514,7 @@
             }
         },
 
-        requireLineFeedAtFileEnd: function () {
+        requireLineFeedAtFileEnd: function() {
             var message;
 
             message = "The last  line of a source file must end with a line feed.";
@@ -524,7 +524,7 @@
             }
         },
 
-        requireSpaceBeforeObjectValues: function () {
+        requireSpaceBeforeObjectValues: function() {
             var message, right, wrong;
 
             message = "In an object literal, there must be a space after the key.";
@@ -538,7 +538,7 @@
             }
         },
 
-        requireSpaceBetweenArguments: function () {
+        requireSpaceBetweenArguments: function() {
             var message, right, wrong;
 
             message = "When calling a function, there must be a space after each argument separator.";
@@ -557,7 +557,7 @@
          * @param {{beforeOpeningRoundBrace, beforeOpeningCurlyBrace}} jscs
          * @returns {{message: *, right: *, wrong: *}}
          */
-        requireSpacesInFunctionExpression: function (jscs) {
+        requireSpacesInFunctionExpression: function(jscs) {
             var message, right, wrong;
 
             if (jscs === true || (jscs.beforeOpeningRoundBrace && jscs.beforeOpeningCurlyBrace)) {
@@ -581,7 +581,7 @@
             }
         },
 
-        disallowSpacesInAnonymousFunctionExpression: function (jscs) {
+        disallowSpacesInAnonymousFunctionExpression: function(jscs) {
             var message, right, wrong;
 
             if (jscs === true || (jscs.beforeOpeningRoundBrace && jscs.beforeOpeningCurlyBrace)) {
@@ -642,7 +642,7 @@
                 right = "var x = {a: 1};\rvar x = {a: {b: 2} };";
                 wrong = "var x = { a: 1};\rvar x = {a: 1 };\rvar x = { a: {b: 1 }};"
             } else if (jscs.allExcept) {
-                if (jscs.allExcept.indexOf("}") >= 0 ) {
+                if (jscs.allExcept.indexOf("}") >= 0) {
                     message = "In an object literal, do not put a space after the opening curly brace.";
                     right = "var x = {a: 1};";
                     wrong = "var x = { a: 1};";
@@ -677,7 +677,7 @@
                 right = "var x = [1, 2];\rvar x = [1, [2, 3] ];";
                 wrong = "var x = [1, 2 ];\rvar x = [ 1, 2];\rvar x = [1, [2, 3 ]];"
             } else if (jscs.allExcept) {
-                if (jscs.allExcept.indexOf("]") >= 0 ) {
+                if (jscs.allExcept.indexOf("]") >= 0) {
                     message = "In an Array, do not put a space after the opening square bracket.";
                     right = "var x = [1, 2];";
                     wrong = "var x = [ 1, 2];";
@@ -705,7 +705,7 @@
                 right = "var x = (3 + 4) * 5;\rvar x = (3 * (4 + 5)) * 6;";
                 wrong = "var x = ( 3 + 4);\rvar x = (3 + 4 );\rvar x = (3 + ( 4 * 5) ) / 6;"
             } else if (jscs.only) {
-                if (jscs.only.indexOf("(") >= 0 ) {
+                if (jscs.only.indexOf("(") >= 0) {
                     message = "In an expression, do not put a space after the opening paren.";
                     right = "var x = (3 + 4) * 5;";
                     wrong = "var x = ( 3 + 4) * 5;";
@@ -769,11 +769,39 @@
         disallowYodaConditions: function() {
             var message, right, wrong;
             
-            message = "So-called \"Yoda conditions\" are not allowed. When doing a boolean comparision," +
+            message = "So-called \"Yoda conditions\" are not allowed. When doing a boolean comparison," +
                     " the constant, if any, should be on the right";
             right = "if (a === 1) {\r    return;\r}";
             wrong = "if (1 === a) {\r    return;\r}";
             
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        disallowAnonymousFunctions: function() {
+            var message, right, wrong;
+
+            message = "All function expressions must be named (no anonymous functions).";
+            right = "var x = function foo() {};\r$(\"#myDiv\").click(function bar() {});";
+            wrong = "var x = function() {};\r$(\"#myDiv\").click(function() {});";
+
+            return {
+                message: message,
+                right: right,
+                wrong: wrong
+            }
+        },
+
+        "disallowCapitalizedComments": function() {
+            var message, right, wrong;
+
+            message = "The first alphabetical character of a comment must be lowercase.";
+            right = "// a valid comment\r/*\r a valid comment\r */";
+            wrong = "// An invalid comment\r/*\r An invalid comment\r */";
+
             return {
                 message: message,
                 right: right,
