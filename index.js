@@ -36,10 +36,14 @@
             options.theme = options.theme || "default";
             options.valid_keyword = options.valid_keyword || "VALID";
             options.invalid_keyword = options.invalid_keyword || "INVALID";
-            
+
             for (rule in rules) {
                 props[rule] = rules[rule](jscs[rule]);
             }
+
+            var cssfile = "./" + options.theme + ".css";
+            
+            options.styles = fs.readFileSync(cssfile, "utf8");
 
             return main({options: options, props: props});
         }, 
