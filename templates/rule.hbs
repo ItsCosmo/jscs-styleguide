@@ -1,6 +1,6 @@
 <li class="styleitem">
     <p class="description">
-    {{{message}}}{{{message1}}}{{{message2}}}{{{message3}}}
+        {{{message}}}{{{message1}}}{{{message2}}}{{{message3}}}
     </p>
     {{#if jscs.length }}
     <ul class="jscslist">
@@ -10,11 +10,16 @@
     </ul>
     {{/if}}
     {{#if jscs.allExcept}}
-        <ul>
-            {{#each jscs.allExcept}}
-                <li>"{{ this }}"</li>
-            {{/each}}
-        </ul>
+        {{#unless jscs.ignoreException}}
+            <ul>
+                {{#each jscs.allExcept}}
+                    <li>"{{ this }}"</li>
+                {{/each}}
+            </ul>
+        {{/unless}}
+    {{/if}}
+    {{#if options.showJSCS}}
+        <div class="jscs"><span class="jscsid">JSCS:</span><span class="jscsrule">{{@key}}</span></div>
     {{/if}}
     {{#if example}}
         <div class="example">
