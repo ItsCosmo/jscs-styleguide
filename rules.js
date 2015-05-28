@@ -652,7 +652,7 @@
                     wrong = "var x =  {a: 1 };";
                 }
                 // don't want to show a list of exceptions
-                jscs.allExcept = false;
+                jscs.ignoreException = true;
             }
             
             return {
@@ -741,7 +741,7 @@
         disallowNewlineBeforeBlockStatements: function() {
             var message, right, wrong;
             
-            message = "Do not put a line feed before opening curly brace of block statememts.";
+            message = "Do not put a line feed before the opening curly brace of block statememts.";
             right = "if (condition) {\r    x++;\r}";
             wrong = "if (condition)\r{\r    x++;\r}";
             
@@ -810,4 +810,3 @@
         }
     }
 }());
-
