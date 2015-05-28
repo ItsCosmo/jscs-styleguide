@@ -1,9 +1,10 @@
 <body class="{{options.theme}}">
-    <h1 class="title">{{options.title}}</h1>
-    <ol>
-        {{#each props}}
-            {{>rule options=../options}}
-        {{/each}}
-    </ol>
+    <div class="styleguide">
+        <h1 class="title">{{options.title}}</h1>
+        <ol>
+            {{#each props}}
+                {{>rule options=../options}}
+            {{/each}}
+        </ol>
+    </div>
 </body>
-      
