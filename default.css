@@ -1,8 +1,8 @@
-body {
+.styleguide {
     font-family: BentonSans, "Helvetica Neue", Arial, sans-serif;
     font-size: 0.9em;
 }
-h1.title {
+.styleguide h1.title {
     width: 100%;
     background-color: #0066aa;
     color: white;
@@ -10,7 +10,7 @@ h1.title {
     box-sizing: border-box;
 }
 
-.right, .wrong, .example {
+.styleguide .right, .wrong, .example {
     background-color: white;
     line-height: 1.5em;
     padding: 0;
@@ -20,27 +20,27 @@ h1.title {
     margin-top: 10px;
 }
 
-.heading span {
+.styleguide .heading span {
     padding-left: 10px;
     font-size: 0.7em;
 }
 
-.styleitem {
+.styleguide .styleitem {
     margin-top: 10px;
 }
 
-pre {
+.styleguide pre {
     margin: 5px 0 5px 10px;
 }
-ol {
+.styleguide ol {
     width: 50%;
 }
-ul {
+.styleguide ul {
     margin-bottom: 10px;
     background-color: #ffffcc;
     border-left: 4px solid #444444;
 }
-ul li {
+.styleguide ul li {
     list-style-type: none;
     display: inline-block;
     /* background-color: #cceeff; */
@@ -48,21 +48,34 @@ ul li {
     margin-right: 3px;
     border-radius: 3px;
 }
-.heading {
+.styleguide .heading {
     display: inline-block;
     width: 100%;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
 
-.right .heading {
+.styleguide .right .heading {
     background-color: #aaffaa;
 }
 
-.wrong .heading {
+.styleguide .wrong .heading {
     background-color: #ffaaaa;
 }
 
-.example .heading {
+.styleguide .example .heading {
     background-color: #aaaaaa;
+}
+
+.styleguide .jscs  {
+    background-color: #ddd;
+    color: #444;
+}
+
+.styleguide .jscsid {
+    font-weight: bold;
+}
+
+.styleguide .jscsrule {
+    font-style: italic;
 }
