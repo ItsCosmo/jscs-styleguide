@@ -25,6 +25,11 @@ The following JSCS rules have been completed so far. More are being added every 
 
     disallowAnonymousFunctions
     disallowCapitalizedComments
+    disallowCommaBeforeLineBreak
+    disallowCurlyBraces
+    disallowDanglingUnderscores
+    disallowEmptyBlocks
+    disallowFunctionDeclarations
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
     disallowMultipleLineBreaks

@@ -12,7 +12,7 @@ gulp.task("mocha", function () {
 });
 
 gulp.task("watch", function() {
-    gulp.watch(["test/**/*.js", "index.js", "templates/**/*.*", "rules.js", "config.jscs.json", "default.css"], ["mocha"]);
+    gulp.watch(["test/**/*.js", "index.js", "templates/**/*.*", "rules.js", "config.test.json", "default.css"], ["mocha"]);
 })
 
 gulp.task("default", ["mocha", "watch"]);
