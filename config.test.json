@@ -20,6 +20,18 @@
         "disallowFunctionDeclarations": true
     },
     {
+        "disallowIdentifierNames": ["foo", "bar", "temp"]
+    },
+    {
+        "disallowImplicitTypeConversion": ["boolean", "numeric", "string", "binary"]
+    },
+    {
+        "disallowKeywordsInComments": true
+    },
+    {
+        "disallowKeywordsInComments": ["thisword"]
+    },
+    {
         "requireCurlyBraces": [
             "if",
             "else",

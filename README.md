@@ -30,6 +30,9 @@ The following JSCS rules have been completed so far. More are being added every 
     disallowDanglingUnderscores
     disallowEmptyBlocks
     disallowFunctionDeclarations
+    disallowIdentifierNames
+    disallowImplicitTypeConversion
+    disallowKeywordsInComments
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
     disallowMultipleLineBreaks
