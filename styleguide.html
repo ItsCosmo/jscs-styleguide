@@ -93,6 +93,21 @@
         <ol>
                 <li class="styleitem">
                 <p class="description">
+                    Unassigned functions are not to be named inline.
+                </p>
+                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowNamedUnassignedFunctions</span></div>
+                    <div class="right">
+                        <span class="heading"><span>COOL</span></span>
+                        <pre><code class="lang-js">[].forEach(function() {});var assigned = function() {};function named() {};</code></pre>
+                    </div>
+                    <div class="wrong">
+                        <span class="heading"><span>NOT COOL</span></span>
+                        <pre><code>[].forEach(function namedAndUnassigned() {});</code></pre>
+                    </div>
+                
+                </li>
+                <li class="styleitem">
+                <p class="description">
                     Curly braces are required after the following statements:
                 </p>
                 <ul class="jscslist">

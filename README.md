@@ -41,12 +41,15 @@ The following JSCS rules have been completed so far. More are being added every 
     disallowFunctionDeclarations
     disallowIdentifierNames
     disallowImplicitTypeConversion
+    disallowKeywords
     disallowKeywordsInComments
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
     disallowMultipleLineBreaks
-    disallowMultipleLineString
+    disallowMultipleLineStrings
     disallowMultipleSpaces
+    disallowMultipleVarDecl
+    disallowNamedUnassignedFunctions
     disallowNewlineBeforeBlockStatements
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators

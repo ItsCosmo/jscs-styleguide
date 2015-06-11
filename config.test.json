@@ -26,10 +26,25 @@
         "disallowImplicitTypeConversion": ["boolean", "numeric", "string", "binary"]
     },
     {
+        "disallowKeywords": ["with"]
+    },
+    {
         "disallowKeywordsInComments": true
     },
     {
         "disallowKeywordsInComments": ["thisword"]
+    },
+    {
+        "disallowMultipleVarDecl": true
+    },
+    {
+        "disallowMultipleVarDecl": "strict"
+    },
+    {
+        "disallowMultipleVarDecl": "exceptUndefined"
+    },
+    {
+        "disallowNamedUnassignedFunctions": true
     },
     {
         "requireCurlyBraces": [
