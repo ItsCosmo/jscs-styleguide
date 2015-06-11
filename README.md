@@ -19,6 +19,15 @@ Generate a human-readable Style Guide from a JSCS configuration.
     // create a file called stylesheet.html in current folder
     style.file(jscs, {title: "My Style Guide"});
 
+## Options
+
+    {
+        title: "Title of Styleguide. Default is 'Style Guide'.",
+        valid_keyword: "Heading for valid usage, e.g. 'VALID', 'COOL', 'DO THIS'. Default is 'VALID'.",
+        invalid_keyword: "Heading for invalid usage, e.g. 'INVALID', 'NOT COOL', 'NOT THIS'. Default is 'INVALID'.",
+        theme: "Will load 'theme'.css into HTML <head>. Default is 'default'."
+    }
+
 ## TODO
 
 The following JSCS rules have been completed so far. More are being added every day. We will complete this!
