@@ -18,6 +18,20 @@ Generate a human-readable Style Guide from a JSCS configuration.
     
     // create a file called stylesheet.html in current folder
     style.file(jscs, {title: "My Style Guide"});
+    
+### Loading rules from .jscsrc
+
+    var style = require("jscs-styleguide");
+    var fs = require("fs");
+    var rules = JSON.parse(fs.readFileSync("../.jscsrc", "utf8"));
+
+    var Checker = require("jscs");
+    var checker = new Checker();
+    checker.registerDefaultRules();
+    checker.configure(rules);
+
+    var config = checker.getProcessedConfig();
+    style.file(config, {title: "My Style Guide"});
 
 ## Options
 
