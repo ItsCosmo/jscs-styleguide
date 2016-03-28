@@ -8,20 +8,9 @@ Generate a human-readable Style Guide from a JSCS configuration.
 ## Usage
 
     var style = require("jscs-styleguide");
-    var jscs = require("./path/to/config.jscs.json");
 
-    // get html body only for stylesheet, as string
-    var body = style.body(jscs, {title: "My Style Guide"});
-    
-    // get html document for stylesheet, as string
-    var html = style.html(jscs, {title: "My Style Guide"});
-    
-    // create a file called stylesheet.html in current folder
-    style.file(jscs, {title: "My Style Guide"});
-    
-### Loading rules from .jscsrc
+### Loading rules from .jscsrc (thanks to Sergey Sharov)
 
-    var style = require("jscs-styleguide");
     var fs = require("fs");
     var rules = JSON.parse(fs.readFileSync("../.jscsrc", "utf8"));
 
@@ -31,7 +20,23 @@ Generate a human-readable Style Guide from a JSCS configuration.
     checker.configure(rules);
 
     var config = checker.getProcessedConfig();
+
+### Generating HTML styleguide
+
+    // get html body only for stylesheet, as string
+    // to create an HTML file in your own way
+    var body = style.body(config, {title: "My Style Guide"});
+
+    // get html document for stylesheet, as string
+    // to do with as you please
+    var html = style.html(config, {title: "My Style Guide"});
+
+    // create stylesheet.html in current folder
     style.file(config, {title: "My Style Guide"});
+
+## Run example
+
+    npm run example
 
 ## Options
 

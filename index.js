@@ -18,7 +18,7 @@
 
             fs.unlink("styleguide.html", function(err) {
                 if (err) {
-                    console.log(err);
+                    console.log("");
                 }
                 fs.writeFile("styleguide.html", out, function(err) {
                     if (err) {

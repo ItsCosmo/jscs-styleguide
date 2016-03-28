@@ -4,8 +4,17 @@
 var chai = require("chai"),
     should = chai.should(),
     expect = chai.expect(),
+    fs = require("fs"),
+    rules = JSON.parse(fs.readFileSync(".jscsrc", "utf8"));
+    Checker = require("jscs"),
+    checker = new Checker(),
+    checker.registerDefaultRules(),
+    checker.configure(rules),
+    jscs = checker.getProcessedConfig();
+
+
     style = require("../index"),
-    jscs = require("../config.jscs.json"),
+    //jscs = require("../config.jscs.json"),
     testjscs = require("../config.test.json");
 
 describe("jscs-styleguide", function() {
@@ -31,6 +40,5 @@ describe("jscs-styleguide", function() {
         for (var i = 0; i < testjscs.length; i++) {
             out += JSON.stringify(style.rule(testjscs[i], {showJSCS: true}))+"\n";
         }
-        console.log(out);
     });
 });

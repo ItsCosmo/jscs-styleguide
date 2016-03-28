@@ -1,735 +1,0 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My  Fantastic Style Guide</title>
-    <style>
-.styleguide {
-    font-family: BentonSans, "Helvetica Neue", Arial, sans-serif;
-    font-size: 0.9em;
-}
-.styleguide h1.title {
-    width: 100%;
-    background-color: #0066aa;
-    color: white;
-    padding-left: 30px;
-    box-sizing: border-box;
-}
-
-.styleguide .right, .wrong, .example {
-    background-color: white;
-    line-height: 1.5em;
-    padding: 0;
-    border-radius: 6px;
-    border: 1px solid #aaaaaa;
-    width: 75%;
-    margin-top: 10px;
-}
-
-.styleguide .heading span {
-    padding-left: 10px;
-    font-size: 0.7em;
-}
-
-.styleguide .styleitem {
-    margin-top: 10px;
-}
-
-.styleguide pre {
-    margin: 5px 0 5px 10px;
-}
-.styleguide ol {
-    width: 50%;
-}
-.styleguide ul {
-    margin-bottom: 10px;
-    background-color: #ffffcc;
-    border-left: 4px solid #444444;
-}
-.styleguide ul li {
-    list-style-type: none;
-    display: inline-block;
-    /* background-color: #cceeff; */
-    padding: 2px;
-    margin-right: 3px;
-    border-radius: 3px;
-}
-.styleguide .heading {
-    display: inline-block;
-    width: 100%;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
-
-.styleguide .right .heading {
-    background-color: #aaffaa;
-}
-
-.styleguide .wrong .heading {
-    background-color: #ffaaaa;
-}
-
-.styleguide .example .heading {
-    background-color: #aaaaaa;
-}
-
-.styleguide .jscs  {
-    background-color: #ddd;
-    color: #444;
-}
-
-.styleguide .jscsid {
-    font-weight: bold;
-}
-
-.styleguide .jscsrule {
-    font-style: italic;
-}
-
-    </style>
-</head>
-<body class="default">
-    <div class="styleguide">
-        <h1 class="title">My  Fantastic Style Guide</h1>
-        <ol>
-                <li class="styleitem">
-                <p class="description">
-                    Unassigned functions are not to be named inline.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowNamedUnassignedFunctions</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">[].forEach(function() {});var assigned = function() {};function named() {};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>[].forEach(function namedAndUnassigned() {});</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Curly braces are required after the following statements:
-                </p>
-                <ul class="jscslist">
-                        <li>"if"</li>
-                        <li>"else"</li>
-                        <li>"for"</li>
-                        <li>"while"</li>
-                        <li>"do"</li>
-                        <li>"try"</li>
-                        <li>"catch"</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireCurlyBraces</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (condition) {    someThing();}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if (condition) someThing();</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    When expressions involving binary operators are split between lines, the operator must appear before the line break.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireOperatorBeforeLineBreak</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = y ?        1 : 2;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = y        ? 1 : 2;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Identifiers must be camelCased or UPPERCASE_WITH_UNDERSCORES
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireCamelCaseOrUpperCaseIdentifiers</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var camelCase = 0;var CamelCase = 1;var _camelWithUnderscore = 2;var UPPER_CASE = 3;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var lower_case = 0;var Mixed_case = 2;var mixed_Case = 3;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                     All constructors except for <code>this</code> must be capitalized.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireCapitalizedConstructors</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = new A();var y = new this();</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = new a();</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    When a list is split over multiple lines, the comma separator must come at the end of a line.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireCommaBeforeLineBreak</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = {    one: 1,    two: 2,    three: 3};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = {    one: 1    ,two: 2    ,three: 3};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Use $ to begin a variable or object property name which is a jQuery assignment.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireDollarBeforejQueryAssignment</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var $x = $(&quot;.foo&quot;);var y = {    $x = $(&quot;.foo&quot;)};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var y = $(&quot;.foo&quot;);var y = {    x = $(&quot;.foo&quot;)};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Multiple consecutive <code>var</code> declarations must be declared as a comma-separated list with a single <code>var</code>. 
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireMultipleVarDecl</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = 1, y = 2;someOtherCode();var a = 3,    b = 4;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = 1;var y = 2;someOtherCode();</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Lines may have a maximum of 160 characters. Tabs (\t) are counted as 4 characters. Comments are allowed to break this rule. Regular expression literals are allowed to break this rule.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">maximumLineLength</span></div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Block statements must be indented with 4 space characters.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">validateIndentation</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (a) {    b = c; \\ line is indented with 4 spaces}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if (a) {      b = c; \\ line is indented with 6 spaces}</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Strings must be quoted with double-quotes. The other quote mark may be used only to avoid having to escape.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">validateQuoteMarks</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var s = &quot;A String Value&quot;;var s = &#x27;A String containing &quot;quote mark&quot;&#x27;;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var s = &#x27;A String Value&#x27;;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Function parameters must be separated by <code>", "</code>. Newlines are ignored. 
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">validateParameterSeparator</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">doSomething(1, 2, 3);other(1,     2,     3);</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>doSomething(1,  2,  3) // extra space between parameters</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Use concatenation to span a string across multiple lines.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowMultipleLineStrings</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = &quot;The &quot; +        &quot;Lazy Dog&quot;;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = &quot;The\        Lazy Dog&quot;;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Lines may not contain a mixture of spaces and tab (\t) characacters. 
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowMixedSpacesAndTabs</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">   x = 1; // \t   y = 2; // \s\s\s\s</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>     z = 3; // \t\s</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Only one space is allowed between identifiers, keywords, or any other tokens.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowMultipleSpaces</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = 5;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var  x = 5;var x  = 5;var x =  5;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Don't put spaces between an object key and the following colon (:)
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpaceAfterObjectKeys</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = {a: 1};var y = {    a: 1};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = {a : 1};var y = {    a : 1};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put spaces after the following unary operators:
-                </p>
-                <ul class="jscslist">
-                        <li>"!"</li>
-                        <li>"--"</li>
-                        <li>"++"</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpaceAfterPrefixUnaryOperators</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = !y;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = ! y;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put spaces before () in a function call.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInCallExpression</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = foo();</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = foo ();</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not place the following keywords on a new line:
-                </p>
-                <ul class="jscslist">
-                        <li>"else"</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowKeywordsOnNewLine</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">} else {</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>}else {</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    The following keywords must be followed by a space:
-                </p>
-                <ul class="jscslist">
-                        <li>"if"</li>
-                        <li>"else"</li>
-                        <li>"for"</li>
-                        <li>"while"</li>
-                        <li>"do"</li>
-                        <li>"switch"</li>
-                        <li>"return"</li>
-                        <li>"try"</li>
-                        <li>"catch"</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceAfterKeywords</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (x) {    x++;}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if(x) {    x++;}</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    The following keywords must be preceeded by a space:
-                </p>
-                <ul class="jscslist">
-                        <li>"else"</li>
-                        <li>"while"</li>
-                        <li>"catch"</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceBeforeKeywords</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">} else {</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>}else {</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not allow 'sticky' binary operators. The following operators must be preceeded by a space:
-                </p>
-                <ul class="jscslist">
-                        <li>"="</li>
-                        <li>"+="</li>
-                        <li>"-="</li>
-                        <li>"*="</li>
-                        <li>"/="</li>
-                        <li>"%="</li>
-                        <li>"&lt;&lt;="</li>
-                        <li>"&gt;&gt;="</li>
-                        <li>"&gt;&gt;&gt;="</li>
-                        <li>"&amp;="</li>
-                        <li>"|="</li>
-                        <li>"^="</li>
-                        <li>"+="</li>
-                        <li>"+"</li>
-                        <li>"-"</li>
-                        <li>"*"</li>
-                        <li>"/"</li>
-                        <li>"%"</li>
-                        <li>"&lt;&lt;"</li>
-                        <li>"&gt;&gt;"</li>
-                        <li>"&gt;&gt;&gt;"</li>
-                        <li>"&amp;"</li>
-                        <li>"|"</li>
-                        <li>"^"</li>
-                        <li>"&amp;&amp;"</li>
-                        <li>"||"</li>
-                        <li>"==="</li>
-                        <li>"=="</li>
-                        <li>"&gt;="</li>
-                        <li>"&lt;="</li>
-                        <li>"&lt;"</li>
-                        <li>"&gt;"</li>
-                        <li>"!="</li>
-                        <li>"!=="</li>
-                </ul>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceBeforeBinaryOperators</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">x != y;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>x!= y;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    A space is required after all binary operators.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceAfterBinaryOperators</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">x + y;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>x +y;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    In the conditional (ternary) operator, spaces are to be included as shown.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpacesInConditionalExpression</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = a ? b : c;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = a?b:c;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    A space is required before the opening brace of a block statement.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceBeforeBlockStatements</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (condition) {    foo();}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if (condition){    foo();}</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    A space is required between the clauses of a <code>for</code> statement (after the semicolons).
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpacesInForStatement</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">for(var i = 0; i &lt; len; i++) {    x++;}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>for(var i = 0;i &lt; len;i++) {    x++;}</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    The last  line of a source file must end with a line feed.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireLineFeedAtFileEnd</span></div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    In an object literal, there must be a space after the key.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceBeforeObjectValues</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = {a: 1};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = {a:1};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    When calling a function, there must be a space after each argument separator.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpaceBetweenArguments</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">foo(a, b);</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>foo(a,b);</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    There must be a space before the opening curly brace in a <code>function</code> expression.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">requireSpacesInFunctionExpression</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = function() {};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = funciton(){};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    There must not be a space before the opening paren in a <code>function</code> expression.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInAnonymousFunctionExpression</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = function() {};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = function () {};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put a space before the opening paren in a <code>function</code> expression or definition.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInFunction</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">function a(){};function a() {};var x = function() {};var x = function a(){};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>function a (){};function a () {};</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    In an object literal, do not put a space before the closing curly brace.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInsideObjectBrackets</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = {a: 1};</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x =  {a: 1 };</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    In an Array, do not put a space after the opening square bracket, or before the closing square bracket.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInsideArrayBrackets</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = [1, 2];var x = [1, [2, 3]];</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = [ 1, 2];var x = [1, 2 ];var x = [1, [ 2, 3 ] ];</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    In an expression, do not put a space after the opening paren, or before the closing paren.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowSpacesInsideParentheses</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = (3 + 4) * 5;var x = (3 * (4 + 5)) * 6;</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = ( 3 + 4);var x = (3 + 4 );var x = (3 + ( 4 * 5) ) / 6;</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put multiple empty lines in a row.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowMultipleLineBreaks</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = 1;x++; // preceeding line is empty</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = 1;x++; // preceeding two lines are empty</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put a line feed before the opening curly brace of block statememts.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowNewlineBeforeBlockStatements</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (condition) {    x++;}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if (condition){    x++;}</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    Do not put a comma after the last element in an array or object literal.
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowTrailingComma</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">var x = {    a: 1,    b: 2};var x = [    &quot;A&quot;,    &quot;B&quot;,    &quot;C&quot;];</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>var x = {    a: 1,    b: 2,};var x = [    &quot;A&quot;,    &quot;B&quot;,    &quot;C&quot;,];</code></pre>
-                    </div>
-                
-                </li>
-                <li class="styleitem">
-                <p class="description">
-                    So-called "Yoda conditions" are not allowed. When doing a boolean comparison, the constant, if any, should be on the right
-                </p>
-                    <div class="jscs"><span class="jscsid">JSCS: </span><span class="jscsrule">disallowYodaConditions</span></div>
-                    <div class="right">
-                        <span class="heading"><span>COOL</span></span>
-                        <pre><code class="lang-js">if (a === 1) {    return;}</code></pre>
-                    </div>
-                    <div class="wrong">
-                        <span class="heading"><span>NOT COOL</span></span>
-                        <pre><code>if (1 === a) {    return;}</code></pre>
-                    </div>
-                
-                </li>
-        </ol>
-    </div>
-</body>
-</html>        

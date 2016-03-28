@@ -1,6 +1,6 @@
 {
   "name": "jscs-styleguide",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Create Human readable Style Guide from JSCS configuration",
   "main": "index.js",
   "dependencies": {
@@ -14,10 +14,12 @@
     "gulp-help": "^1.3.4",
     "gulp-mocha": "^2.0.1",
     "gulp-util": "^3.0.4",
+    "jscs": "^2.11.0",
     "mocha": "^2.2.4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "example": "node example"
   },
   "repository": {
     "type": "git",
