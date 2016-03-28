@@ -12,7 +12,7 @@ Generate a human-readable Style Guide from a JSCS configuration.
 ### Loading rules from .jscsrc (thanks to Sergey Sharov)
 
     var fs = require("fs");
-    var rules = JSON.parse(fs.readFileSync("../.jscsrc", "utf8"));
+    var rules = JSON.parse(fs.readFileSync(".jscsrc", "utf8"));
 
     var Checker = require("jscs");
     var checker = new Checker();
