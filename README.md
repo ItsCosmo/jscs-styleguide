@@ -48,7 +48,7 @@ Generate a human-readable Style Guide from a JSCS configuration.
 
 ## Default css
 
-jscs-styleguide includes a default.css in the /example folder that you can use in lieu of building your own. If you plan to user it,
+jscs-styleguide includes a default.css in the /example folder that you can use in lieu of building your own. If you plan to use it,
 just copy it to your project before running jscs-styleguide
 
 ## Run example
