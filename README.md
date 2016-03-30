@@ -45,15 +45,23 @@ Generate a human-readable Style Guide from a JSCS configuration.
     var _html = html(config, {title: "My Style Guide"});
     
     file(config, {title: "My Style Guide"});
-        
+
+## Default css
+
+jscs-styleguide includes a default.css in the /example folder that you can use in lieu of building your own. If you plan to user it,
+just copy it to your project before running jscs-styleguide
 
 ## Run example
 
-You can run an example from the jscs-styleguide root folder as follows:
+jscs-styleguide contains a complete sample application which you can use to generate an HTML style guide. This will make it
+very easy for you to understand how jscs-styleguide works. The sample application is located in the /example folder. It has a
+sample .jscsrc and default.css file ready to roll.
 
-    cd node_modules/jscs-styleguide
+To run the example, do the following
+
+    cd node_modules/jscs-styleguide/example
     npm install
-    npm run example     // creates file styleguide.html in root folder. Load it in your browser!
+    npm run example     // creates file StyleGuide.html in /examples folder. Load it in your browser!
 
 ## Options
 

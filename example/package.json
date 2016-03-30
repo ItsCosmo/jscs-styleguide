@@ -1,0 +1,16 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Example app for using jscs-styleguide",
+  "scripts": {
+    "example": "node example"
+  },
+  "keywords": [
+    "example"
+  ],
+  "author": "Paul Kleimeyer <itscosmo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jscs-styleguide": "^0.5.0"
+  }
+}

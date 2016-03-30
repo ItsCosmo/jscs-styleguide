@@ -1,5 +1,3 @@
 /src/
 /test/
-.jscsrc
 gulpfile.babel.js
-styleguide.html

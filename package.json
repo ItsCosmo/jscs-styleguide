@@ -1,6 +1,6 @@
 {
   "name": "jscs-styleguide",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Create Human readable Style Guide from JSCS configuration",
   "main": "lib/index.js",
   "dependencies": {

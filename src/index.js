@@ -17,7 +17,7 @@ const file = (jscs, options) => {
 
     fs.unlink(fileName, function (err) {
         if (err) {
-            console.log("styleguide.html does not exist... yet. Usually nothing to worry about.");
+            console.log("%s does not exist... yet. Usually nothing to worry about.", fileName);
         }
         fs.writeFile(fileName, out, (err) => {
             if (err) {
