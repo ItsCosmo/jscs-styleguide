@@ -29,7 +29,6 @@
   "scripts": {
     "test": "mocha",
     "example": "babel example.js | node",
-    "prepublish": "npm run build",
     "build": "gulp"
   },
   "repository": {
