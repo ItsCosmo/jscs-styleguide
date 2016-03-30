@@ -11,6 +11,7 @@
   "author": "Paul Kleimeyer <itscosmo@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "jscs": "^2.11.0",
     "jscs-styleguide": "^0.5.0"
   }
 }
