@@ -1,4 +1,8 @@
 {
+    "disallowCurlyBraces": true,
+    "disallowCommaBeforeLineBreak": {
+        "allExcept": ["function"]
+    },
     "disallowAnonymousFunctions": true,
     "disallowCapitalizedComments": true,
     "requireCurlyBraces": [
