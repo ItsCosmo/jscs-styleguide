@@ -12,34 +12,6 @@
 
     module.exports = {
 
-        disallowAnonymousFunctions: function() {
-            var message, right, wrong;
-
-            message = "All function expressions must be named (no anonymous functions).";
-            right = "var x = function foo() {};\r$(\"#myDiv\").click(function bar() {});";
-            wrong = "var x = function() {};\r$(\"#myDiv\").click(function() {});";
-
-            return {
-                message: message,
-                right: right,
-                wrong: wrong
-            }
-        },
-
-        disallowCapitalizedComments: function() {
-            var message, right, wrong;
-
-            message = "The first alphabetical character of a comment must be lowercase.";
-            right = "// a valid comment\r/*\r a valid comment\r */";
-            wrong = "// An invalid comment\r/*\r An invalid comment\r */";
-
-            return {
-                message: message,
-                right: right,
-                wrong: wrong
-            }
-        },
-
         disallowCommaBeforeLineBreak: function(jscs) {
             var message, right, wrong;
 
@@ -447,15 +419,14 @@
                     wrong = "var x =  {a: 1 };";
                 }
                 // don't want to show a list of exceptions
-                jscs.ignoreException = true;
+                //jscs.ignoreException = true;
             }
 
             return {
                 message: message,
                 message1: message1,
                 right: right,
-                wrong: wrong,
-                jscs: jscs
+                wrong: wrong
             }
         },
 

@@ -1,4 +1,6 @@
 {
+    "disallowAnonymousFunctions": true,
+    "disallowCapitalizedComments": true,
     "requireCurlyBraces": [
         "if",
         "else",
@@ -80,7 +82,7 @@
         "beforeOpeningRoundBrace": true
     },
     "disallowSpacesInsideObjectBrackets": {
-        "allExcept": ["{"]   
+        "allExcept": ["{"]
     },
     "disallowSpacesInsideArrayBrackets": "all",
     "disallowSpacesInsideParentheses": true,

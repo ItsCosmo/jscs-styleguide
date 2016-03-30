@@ -13,9 +13,8 @@ var chai = require("chai"),
     jscs = checker.getProcessedConfig();
 
 
-    style = require("../index"),
-    //jscs = require("../config.jscs.json"),
-    testjscs = require("../config.test.json");
+    style = require("../lib/index"),
+    testjscs = require("./config.test.json");
 
 describe("jscs-styleguide", function() {
     it("should exist", function() {
