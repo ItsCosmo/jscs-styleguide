@@ -1,14 +1,16 @@
-export const disallowIdentifierNames = (jscs) =>  {
-            var message, right, wrong;
+import sprintf from "sprintf"
 
-            message = "The following identifier names are not allowed:";
-            right = "var good = 1;\rvar object[\"fine\"] = 2;";
-            wrong = sub("var {0} = 1;", jscs[0]);
+export const disallowIdentifierNames = (jscs) => {
+    var message, right, wrong;
 
-            return {
-                message: message,
-                right: right,
-                wrong: wrong,
-                jscs: jscs
-            }
-        };
+    message = "The following identifier names are not allowed:";
+    right = "var good = 1;\rvar object[\"fine\"] = 2;";
+    wrong = sprintf("var %s = 1;", jscs[0]);
+
+    return {
+        message,
+        right,
+        wrong,
+        jscs
+    }
+};

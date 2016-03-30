@@ -12,13 +12,14 @@ hb.registerPartial("body", body_templ);
 hb.registerPartial("rule", rule_templ);
 
 const file = (jscs, options) => {
-    const out = html(jscs, options);
+    const out = html(jscs, options),
+          fileName = options.fileName || "styleguide.html";
 
-    fs.unlink("styleguide.html", function (err) {
+    fs.unlink(fileName, function (err) {
         if (err) {
             console.log("styleguide.html does not exist... yet. Usually nothing to worry about.");
         }
-        fs.writeFile("styleguide.html", out, (err) => {
+        fs.writeFile(fileName, out, (err) => {
             if (err) {
                 return console.log(err);
             }

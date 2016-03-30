@@ -7,7 +7,6 @@ export const disallowCurlyBraces = (jscs) => {
         jscs = ["if", "else", "while", "for", "do", "with"];
     }
 
-    //message = sub("Do not put a curly brace after the following statement{0}:", jscs.length === 1 ? "" : "s");
     message = sprintf("Do not put a curly brace after the following statement%s:", jscs.length === 1 ? "" : "s");
     if (jscs.indexOf("if") >= 0) {
         right = "if (condition) x++;";

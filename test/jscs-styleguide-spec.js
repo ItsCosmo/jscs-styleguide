@@ -22,7 +22,11 @@ describe("jscs-styleguide", function() {
     });
 
     it("should generate an HTML body", function() {
+        style.body.should.exist;
+
         var body = style.body(jscs, {valid_keyword: "COOL", invalid_keyword: "NOT COOL", title: "My Fantastic Style Guide"});
+        
+        
     });
 
     it("should generate an HTML document", function() {

@@ -49,6 +49,10 @@ Generate a human-readable Style Guide from a JSCS configuration.
 
 ## Run example
 
+You can run an example from the jscs-styleguide root folder as follows:
+
+    cd node_modules/jscs-styleguide
+    npm install
     npm run example     // creates file styleguide.html in root folder. Load it in your browser!
 
 ## Options
@@ -57,7 +61,9 @@ Generate a human-readable Style Guide from a JSCS configuration.
         title: "Title of Styleguide. Default is 'Style Guide'.",
         valid_keyword: "Heading for valid usage, e.g. 'VALID', 'COOL', 'DO THIS'. Default is 'VALID'.",
         invalid_keyword: "Heading for invalid usage, e.g. 'INVALID', 'NOT COOL', 'NOT THIS'. Default is 'INVALID'.",
-        theme: "Will load 'theme'.css into HTML <head>. Default is 'default'."
+        theme: "Will load 'theme'.css into HTML <head>. Default is 'default'.",
+        showJSCS: true, // shows the name of each JSCS rule
+        fileName: "name_of_generated_file.html"
     }
 
 ## TODO

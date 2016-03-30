@@ -19,4 +19,4 @@ checker.configure(rules);
 const config = checker.getProcessedConfig();
 
 // Generate HTML styleguide
-StyleGuideFile(config, {title: "My Style Guide"});
+StyleGuideFile(config, {title: "My Style Guide", showJSCS: true});

@@ -4,7 +4,7 @@
 }
 .styleguide h1.title {
     width: 100%;
-    background-color: #0066aa;
+    background-color: #808080;
     color: white;
     padding-left: 30px;
     box-sizing: border-box;
@@ -14,9 +14,7 @@
     background-color: white;
     line-height: 1.5em;
     padding: 0;
-    border-radius: 6px;
     border: 1px solid #aaaaaa;
-    width: 75%;
     margin-top: 10px;
 }
 
@@ -34,10 +32,12 @@
 }
 .styleguide ol {
     width: 50%;
+    min-width: 600px;
+    margin: auto;
 }
 .styleguide ul {
     margin-bottom: 10px;
-    background-color: #ffffcc;
+    background-color: #eee;
     border-left: 4px solid #444444;
 }
 .styleguide ul li {
@@ -51,12 +51,10 @@
 .styleguide .heading {
     display: inline-block;
     width: 100%;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
 }
 
 .styleguide .right .heading {
-    background-color: #aaffaa;
+    background-color: #aaaaaa;
 }
 
 .styleguide .wrong .heading {
@@ -68,7 +66,6 @@
 }
 
 .styleguide .jscs  {
-    background-color: #ddd;
     color: #444;
 }
 

@@ -1,17 +1,11 @@
 {
   "name": "jscs-styleguide",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Create Human readable Style Guide from JSCS configuration",
   "main": "lib/index.js",
   "dependencies": {
     "handlebars": "^3.0.3",
-    "sprintf": "^0.1.5",
-    "string-substitute": "^1.0.2"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
+    "sprintf": "^0.1.5"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

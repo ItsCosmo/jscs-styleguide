@@ -1,18 +1,19 @@
-var style = require("jscs-styleguide");
+import { file as StyleGuideFile} from "jscs-styleguide"
 
-// access File System
-var fs = require("fs");
+// lot's o' steps to get the configuration as a Javascript Object
+// Many thanks to Sergey Sharov for figuring this out
+//
+import fs from "fs"
 
-// assumes you have a .jscsrc file in the current folder
-// modify as needed
 var rules = JSON.parse(fs.readFileSync(".jscsrc", "utf8"));
 
-var Checker = require("jscs");
-var checker = new Checker();
+import Checker from "jscs"
+
+const checker = new Checker();
 checker.registerDefaultRules();
 checker.configure(rules);
 
-var config = checker.getProcessedConfig();
+const config = checker.getProcessedConfig();
 
 // Generate HTML styleguide
-style.file(config, {title: "My Style Guide"});
+StyleGuideFile(config, {title: "My Style Guide", showJSCS: true});

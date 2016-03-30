@@ -1,20 +1,22 @@
-export const disallowKeywordsInComments = (jscs) =>  {
-            var message, right, wrong;
+import sprintf from "sprintf"
 
-            if (jscs === true) {
-                message = "Do not put keywords TODO or FIXME inside a comment.";
-                wrong = "// Don't put TODO in a comment\r/* Or FIXME, either\r*/";
-            } else {
-                message = "Do not put the following keywords inside a comment:";
-                wrong = sub("//Don't put {0} inside a comment", jscs[0]);
-            }
+export const disallowKeywordsInComments = (jscs) => {
+    let message, right, wrong;
 
-            right = "// An acceptable comment\r/* Another acceptable comment\r*/";
+    if (jscs === true) {
+        message = "Do not put keywords TODO or FIXME inside a comment.";
+        wrong = "// Don't put TODO in a comment\r/* Or FIXME, either\r*/";
+    } else {
+        message = "Do not put the following keywords inside a comment:";
+        wrong = sprintf("//Don't put %s inside a comment", jscs[0]);
+    }
 
-            return {
-                message: message,
-                right: right,
-                wrong: wrong,
-                jscs: jscs
-            }
-        };
+    right = "// An acceptable comment\r/* Another acceptable comment\r*/";
+
+    return {
+        message,
+        right,
+        wrong,
+        jscs
+    }
+};
