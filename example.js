@@ -1,6 +1,7 @@
 // normally, you would require("jscs-styleguide")
 // see examples/example.js 
 import { file as StyleGuideFile} from "./lib/index"
+//import { file as StyleGuideFile} from "jscs-styleguide"
 
 // lot's o' steps to get the configuration as a Javascript Object
 // Many thanks to Sergey Sharov for figuring this out
