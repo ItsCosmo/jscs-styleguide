@@ -4,7 +4,7 @@ var styleGuide = require("./lib/index"),
 // lot's o' steps to get the configuration as a Javascript Object
 // Many thanks to Sergey Sharov for figuring this out
 //
-var rules = JSON.parse(fs.readFileSync(".jscsrc", "utf8"));
+var rules = JSON.parse(fs.readFileSync("_jscsrc", "utf8"));
 
 var Checker  = require("jscs"),
     checker = new Checker();
@@ -20,4 +20,5 @@ styleGuide.file(config, {
     valid_keyword: "COOL",
     invalid_keyword: "NOT COOL",
     fileName: "StyleGuide.html",
+    theme: "_default",
     showJSCS: true});
