@@ -1,6 +1,7 @@
 /src/
 /test/
 gulpfile.babel.js
-.jscsrc
-example.js
-default.css
+./.jscsrc
+./example.js
+./default.css
+./StyleGuide.html
