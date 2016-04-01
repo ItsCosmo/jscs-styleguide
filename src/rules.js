@@ -1,22 +1,28 @@
 import { disallowAnonymousFunctions } from "./rules/disallowAnonymousFunctions"
+import { disallowArrayDestructuringReturn } from "./rules/disallowArrayDestructuringReturn"
+import { disallowArrowFunctions } from "./rules/disallowArrowFunctions"
 import { disallowCapitalizedComments } from "./rules/disallowCapitalizedComments"
 import { disallowCommaBeforeLineBreak } from "./rules/disallowCommaBeforeLineBreak"
 import { disallowCurlyBraces } from "./rules/disallowCurlyBraces"
 import { disallowDanglingUnderscores } from "./rules/disallowDanglingUnderscores"
 import { disallowEmptyBlocks } from "./rules/disallowEmptyBlocks"
 import { disallowFunctionDeclarations } from "./rules/disallowFunctionDeclarations"
+import { disallowIdenticalDestructuringNames } from "./rules/disallowIdenticalDestructuringNames"
 import { disallowIdentifierNames } from "./rules/disallowIdentifierNames"
 import { disallowImplicitTypeConversion } from "./rules/disallowImplicitTypeConversion"
 import { disallowKeywords } from "./rules/disallowKeywords"
 import { disallowKeywordsInComments } from "./rules/disallowKeywordsInComments"
 import { disallowKeywordsOnNewLine } from "./rules/disallowKeywordsOnNewLine"
 import { disallowMixedSpacesAndTabs } from "./rules/disallowMixedSpacesAndTabs"
+import { disallowMultiLineTernary } from "./rules/disallowMultiLineTernary"
 import { disallowMultipleLineBreaks } from "./rules/disallowMultipleLineBreaks"
 import { disallowMultipleLineStrings } from "./rules/disallowMultipleLineStrings"
 import { disallowMultipleSpaces } from "./rules/disallowMultipleSpaces"
 import { disallowMultipleVarDecl } from "./rules/disallowMultipleVarDecl"
 import { disallowNamedUnassignedFunctions } from "./rules/disallowNamedUnassignedFunctions"
+import { disallowNestedTernaries } from "./rules/disallowNestedTernaries"
 import { disallowNewlineBeforeBlockStatements } from "./rules/disallowNewlineBeforeBlockStatements"
+import { disallowNotOperatorsInConditionals } from "./rules/disallowNotOperatorsInConditionals"
 import { disallowSpaceAfterObjectKeys } from "./rules/disallowSpaceAfterObjectKeys"
 import { disallowSpaceAfterPrefixUnaryOperators } from "./rules/disallowSpaceAfterPrefixUnaryOperators"
 import { disallowSpacesInAnonymousFunctionExpression } from "./rules/disallowSpacesInAnonymousFunctionExpression"
@@ -51,24 +57,30 @@ import { validateParameterSeparator } from "./rules/validateParameterSeparator"
 import { validateQuoteMarks } from "./rules/validateQuoteMarks"
 export default {
 disallowAnonymousFunctions,
+disallowArrayDestructuringReturn,
+disallowArrowFunctions,
 disallowCapitalizedComments,
 disallowCommaBeforeLineBreak,
 disallowCurlyBraces,
 disallowDanglingUnderscores,
 disallowEmptyBlocks,
 disallowFunctionDeclarations,
+disallowIdenticalDestructuringNames,
 disallowIdentifierNames,
 disallowImplicitTypeConversion,
 disallowKeywords,
 disallowKeywordsInComments,
 disallowKeywordsOnNewLine,
 disallowMixedSpacesAndTabs,
+disallowMultiLineTernary,
 disallowMultipleLineBreaks,
 disallowMultipleLineStrings,
 disallowMultipleSpaces,
 disallowMultipleVarDecl,
 disallowNamedUnassignedFunctions,
+disallowNestedTernaries,
 disallowNewlineBeforeBlockStatements,
+disallowNotOperatorsInConditionals,
 disallowSpaceAfterObjectKeys,
 disallowSpaceAfterPrefixUnaryOperators,
 disallowSpacesInAnonymousFunctionExpression,

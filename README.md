@@ -79,24 +79,30 @@ To run the example, do the following
 The following JSCS rules have been completed so far. These are the most common. More are being added until they are all there. If you really need a rule now, leave me a comment itscosmo@gmail.com
 
     disallowAnonymousFunctions
+    disallowArrayDestructuringReturn
+    disallowArrowFunctions
     disallowCapitalizedComments
     disallowCommaBeforeLineBreak
     disallowCurlyBraces
     disallowDanglingUnderscores
     disallowEmptyBlocks
     disallowFunctionDeclarations
+    disallowIdenticalDestructuringNames
     disallowIdentifierNames
     disallowImplicitTypeConversion
     disallowKeywords
     disallowKeywordsInComments
     disallowKeywordsOnNewLine
     disallowMixedSpacesAndTabs
+    disallowMultiLineTernary
     disallowMultipleLineBreaks
     disallowMultipleLineStrings
     disallowMultipleSpaces
     disallowMultipleVarDecl
     disallowNamedUnassignedFunctions
+    disallowNestedTernaries
     disallowNewlineBeforeBlockStatements
+    disallowNotOperatorsInConditionals
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators
     disallowSpacesInAnonymousFunctionExpression

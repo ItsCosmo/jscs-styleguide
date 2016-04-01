@@ -1,0 +1,78 @@
+.styleguide {
+    font-family: BentonSans, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.9em;
+}
+.styleguide h1.title {
+    width: 100%;
+    background-color: #808080;
+    color: white;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.styleguide .right, .wrong, .example {
+    background-color: white;
+    line-height: 1.5em;
+    padding: 0;
+    border: 1px solid #aaaaaa;
+    margin-top: 10px;
+}
+
+.styleguide .heading span {
+    padding-left: 10px;
+    font-size: 0.7em;
+}
+
+.styleguide .styleitem {
+    margin-top: 10px;
+}
+
+.styleguide pre {
+    margin: 5px 0 5px 10px;
+}
+.styleguide ol {
+    width: 50%;
+    min-width: 600px;
+    margin: auto;
+}
+.styleguide ul {
+    margin-bottom: 10px;
+    background-color: #eee;
+    border-left: 4px solid #444444;
+}
+.styleguide ul li {
+    list-style-type: none;
+    display: inline-block;
+    /* background-color: #cceeff; */
+    padding: 2px;
+    margin-right: 3px;
+    border-radius: 3px;
+}
+.styleguide .heading {
+    display: inline-block;
+    width: 100%;
+}
+
+.styleguide .right .heading {
+    background-color: #aaaaaa;
+}
+
+.styleguide .wrong .heading {
+    background-color: #ffaaaa;
+}
+
+.styleguide .example .heading {
+    background-color: #aaaaaa;
+}
+
+.styleguide .jscs  {
+    color: #444;
+}
+
+.styleguide .jscsid {
+    font-weight: bold;
+}
+
+.styleguide .jscsrule {
+    font-style: italic;
+}

@@ -13,7 +13,7 @@ const config = {
 };
 
 // compiles es6 source
-gulp.task("compile", ["rules"], () =>{
+gulp.task("compile", ["rules"], () => {
     return gulp.src(config.source)
         .pipe(babel())
         .pipe(gulp.dest(config.dist_dir))

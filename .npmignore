@@ -1,3 +1,6 @@
 /src/
 /test/
 gulpfile.babel.js
+.jscsrc
+example.js
+default.css
