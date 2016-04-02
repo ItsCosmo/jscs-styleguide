@@ -11,6 +11,8 @@
     "disallowMultiLineTernary": true,
     "disallowNestedTernaries": {"maxLevel": 3},
     "disallowNotOperatorsInConditionals": true,
+    "disallowObjectKeysOnNewLine": true,
+    "disallowOperatorBeforeLineBreak": [".", "+"],
     "requireCurlyBraces": [
         "if",
         "else",

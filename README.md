@@ -103,6 +103,8 @@ The following JSCS rules have been completed so far. These are the most common. 
     disallowNestedTernaries
     disallowNewlineBeforeBlockStatements
     disallowNotOperatorsInConditionals
+    disallowObjectKeysOnNewLine
+    disallowOperatorBeforeLineBreak
     disallowSpaceAfterObjectKeys
     disallowSpaceAfterPrefixUnaryOperators
     disallowSpacesInAnonymousFunctionExpression

@@ -23,6 +23,8 @@ import { disallowNamedUnassignedFunctions } from "./rules/disallowNamedUnassigne
 import { disallowNestedTernaries } from "./rules/disallowNestedTernaries"
 import { disallowNewlineBeforeBlockStatements } from "./rules/disallowNewlineBeforeBlockStatements"
 import { disallowNotOperatorsInConditionals } from "./rules/disallowNotOperatorsInConditionals"
+import { disallowObjectKeysOnNewLine } from "./rules/disallowObjectKeysOnNewLine"
+import { disallowOperatorBeforeLineBreak } from "./rules/disallowOperatorBeforeLineBreak"
 import { disallowSpaceAfterObjectKeys } from "./rules/disallowSpaceAfterObjectKeys"
 import { disallowSpaceAfterPrefixUnaryOperators } from "./rules/disallowSpaceAfterPrefixUnaryOperators"
 import { disallowSpacesInAnonymousFunctionExpression } from "./rules/disallowSpacesInAnonymousFunctionExpression"
@@ -81,6 +83,8 @@ disallowNamedUnassignedFunctions,
 disallowNestedTernaries,
 disallowNewlineBeforeBlockStatements,
 disallowNotOperatorsInConditionals,
+disallowObjectKeysOnNewLine,
+disallowOperatorBeforeLineBreak,
 disallowSpaceAfterObjectKeys,
 disallowSpaceAfterPrefixUnaryOperators,
 disallowSpacesInAnonymousFunctionExpression,
